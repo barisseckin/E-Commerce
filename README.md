@@ -1,8 +1,10 @@
 ## E-Commerce
 
-<ol>
-  <li>Java</li>
+<ul>
   <li>Spring Boot</li>
-  <li>H2 Database</li>
+  <li>H2 Databse</li>
   <li>Lombok</li>
-</ol>
+  <li>JUnit</li>
+</ul>
+
+
