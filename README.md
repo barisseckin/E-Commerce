@@ -3,6 +3,8 @@
 <ul>
   <li>Spring Boot</li>
   <li>H2 Databse</li>
+  <li>Hibernate</li>
+  <li>Spring Data</li>
   <li>Lombok</li>
   <li>JUnit</li>
 </ul>
