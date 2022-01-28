@@ -9,8 +9,6 @@
   <li>JUnit</li>
 </ul>
 
-<br/>
-
 <h3> Some available services </h3>
 
 <ul>
@@ -19,7 +17,14 @@
       <li>Add product</li>
       <li>Search product</li>
       <li>Delete product</li>
+      <li>Search options by brand and id</li>
     </ul>
+  <li>On the user side</li>
+  <ul>
+      <li>Add user</li>
+      <li>Delete user</li>
+    <li>Search user</li>
+  </ul>  
   
 </ul>  
 
