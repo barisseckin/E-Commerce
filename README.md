@@ -11,6 +11,6 @@
 
 <br/>
 
-##Some available services
+<h3> Some available services </h3>
 
 I'm planning to do the Front-end of the project with React. I will also make updates and edits to existing web Back-end services.
