@@ -1,5 +1,5 @@
 ## E-Commerce
-
+<p>Technologies used in the construction of the project</p>
 <ul>
   <li>Spring Boot</li>
   <li>H2 Databse</li>
