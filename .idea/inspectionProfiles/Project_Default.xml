@@ -1,0 +1,13 @@
+<component name="InspectionProjectProfileManager">
+  <profile version="1.0">
+    <option name="myName" value="Project Default" />
+    <inspection_tool class="MavenPackageUpdate" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="excludeList">
+        <list>
+          <option value="io.springfox:springfox-swagger2" />
+          <option value="io.springfox:springfox-swagger-ui" />
+        </list>
+      </option>
+    </inspection_tool>
+  </profile>
+</component>
