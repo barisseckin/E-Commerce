@@ -1,7 +1,10 @@
 package com.eCommerceProject;
 
+import com.eCommerceProject.api.controller.CategoryController;
+import com.eCommerceProject.business.abstracts.CategoryService;
 import com.eCommerceProject.business.abstracts.ProductService;
 import com.eCommerceProject.dto.createDto.ProductCreateDto;
+import com.eCommerceProject.model.Category;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -15,7 +18,7 @@ public class ECommerceProjectApplication {
 	}
 
 	@Bean
-	CommandLineRunner createInitialProduct(ProductService productService) {
+	CommandLineRunner createInitialProduct(ProductService productService, CategoryService categoryService) {
 		return (args) -> {
 			ProductCreateDto product = new ProductCreateDto();
 			product.setProductName("Gaming Monitor");
@@ -40,6 +43,21 @@ public class ECommerceProjectApplication {
 			product2.setProductPrice(8999.90);
 			product2.setStock(35);
 			productService.add(product);
+
+			Category category = new Category("Ev");
+			categoryService.add(category);
+			Category category1 = new Category("Bilgisayar");
+			categoryService.add(category1);
+			Category category2 = new Category("Telefon");
+			categoryService.add(category2);
+			Category category3 = new Category("Oyun");
+			categoryService.add(category3);
+			Category category4 = new Category("Giyim");
+			categoryService.add(category4);
+			Category category5 = new Category("Spor");
+			categoryService.add(category5);
+			Category category6 = new Category("Hobi");
+			categoryService.add(category6);
 
 		};
 
