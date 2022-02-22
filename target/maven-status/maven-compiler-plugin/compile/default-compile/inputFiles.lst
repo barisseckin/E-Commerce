@@ -1,24 +1,27 @@
-C:\Users\baris\Documents\Intellij IDEA\eCommerceProject\src\main\java\com\eCommerceProject\business\concretes\ProductManager.java
-C:\Users\baris\Documents\Intellij IDEA\eCommerceProject\src\main\java\com\eCommerceProject\core\concretes\ErrorDataResult.java
-C:\Users\baris\Documents\Intellij IDEA\eCommerceProject\src\main\java\com\eCommerceProject\dataAccess\abstracts\UserDao.java
-C:\Users\baris\Documents\Intellij IDEA\eCommerceProject\src\main\java\com\eCommerceProject\entities\concretes\Product.java
-C:\Users\baris\Documents\Intellij IDEA\eCommerceProject\src\main\java\com\eCommerceProject\dataAccess\abstracts\ProductDao.java
-C:\Users\baris\Documents\Intellij IDEA\eCommerceProject\src\main\java\com\eCommerceProject\api\controller\UserController.java
-C:\Users\baris\Documents\Intellij IDEA\eCommerceProject\src\main\java\com\eCommerceProject\api\controller\CategoryController.java
-C:\Users\baris\Documents\Intellij IDEA\eCommerceProject\src\main\java\com\eCommerceProject\api\controller\ProductController.java
-C:\Users\baris\Documents\Intellij IDEA\eCommerceProject\src\main\java\com\eCommerceProject\core\concretes\SuccessResult.java
-C:\Users\baris\Documents\Intellij IDEA\eCommerceProject\src\main\java\com\eCommerceProject\core\concretes\Result.java
-C:\Users\baris\Documents\Intellij IDEA\eCommerceProject\src\main\java\com\eCommerceProject\ECommerceProjectApplication.java
-C:\Users\baris\Documents\Intellij IDEA\eCommerceProject\src\main\java\com\eCommerceProject\core\concretes\DataResult.java
-C:\Users\baris\Documents\Intellij IDEA\eCommerceProject\src\main\java\com\eCommerceProject\entities\concretes\Category.java
-C:\Users\baris\Documents\Intellij IDEA\eCommerceProject\src\main\java\com\eCommerceProject\core\concretes\ErrorResult.java
-C:\Users\baris\Documents\Intellij IDEA\eCommerceProject\src\main\java\com\eCommerceProject\business\abstracts\ProductService.java
-C:\Users\baris\Documents\Intellij IDEA\eCommerceProject\src\main\java\com\eCommerceProject\shared\GenericResponse.java
-C:\Users\baris\Documents\Intellij IDEA\eCommerceProject\src\main\java\com\eCommerceProject\business\abstracts\CategoryService.java
-C:\Users\baris\Documents\Intellij IDEA\eCommerceProject\src\main\java\com\eCommerceProject\dataAccess\abstracts\CategoryDao.java
-C:\Users\baris\Documents\Intellij IDEA\eCommerceProject\src\main\java\com\eCommerceProject\business\concretes\CategoryManager.java
-C:\Users\baris\Documents\Intellij IDEA\eCommerceProject\src\main\java\com\eCommerceProject\core\concretes\SuccessDataResult.java
-C:\Users\baris\Documents\Intellij IDEA\eCommerceProject\src\main\java\com\eCommerceProject\entities\dto\CategoryWithProductDto.java
-C:\Users\baris\Documents\Intellij IDEA\eCommerceProject\src\main\java\com\eCommerceProject\business\abstracts\UserService.java
-C:\Users\baris\Documents\Intellij IDEA\eCommerceProject\src\main\java\com\eCommerceProject\business\concretes\UserManager.java
-C:\Users\baris\Documents\Intellij IDEA\eCommerceProject\src\main\java\com\eCommerceProject\entities\concretes\User.java
+/home/baris/Belgeler/Intellij/E-Commerce/src/main/java/com/eCommerceProject/business/abstracts/CategoryService.java
+/home/baris/Belgeler/Intellij/E-Commerce/src/main/java/com/eCommerceProject/dto/createDto/UserCreateDto.java
+/home/baris/Belgeler/Intellij/E-Commerce/src/main/java/com/eCommerceProject/dataAccess/abstracts/CategoryDao.java
+/home/baris/Belgeler/Intellij/E-Commerce/src/main/java/com/eCommerceProject/core/concretes/ErrorDataResult.java
+/home/baris/Belgeler/Intellij/E-Commerce/src/main/java/com/eCommerceProject/api/controller/ProductController.java
+/home/baris/Belgeler/Intellij/E-Commerce/src/main/java/com/eCommerceProject/core/concretes/SuccessDataResult.java
+/home/baris/Belgeler/Intellij/E-Commerce/src/main/java/com/eCommerceProject/business/concretes/UserManager.java
+/home/baris/Belgeler/Intellij/E-Commerce/src/main/java/com/eCommerceProject/business/abstracts/UserService.java
+/home/baris/Belgeler/Intellij/E-Commerce/src/main/java/com/eCommerceProject/api/controller/UserController.java
+/home/baris/Belgeler/Intellij/E-Commerce/src/main/java/com/eCommerceProject/business/concretes/ProductManager.java
+/home/baris/Belgeler/Intellij/E-Commerce/src/main/java/com/eCommerceProject/shared/GenericResponse.java
+/home/baris/Belgeler/Intellij/E-Commerce/src/main/java/com/eCommerceProject/dataAccess/abstracts/UserDao.java
+/home/baris/Belgeler/Intellij/E-Commerce/src/main/java/com/eCommerceProject/core/concretes/Result.java
+/home/baris/Belgeler/Intellij/E-Commerce/src/main/java/com/eCommerceProject/model/Product.java
+/home/baris/Belgeler/Intellij/E-Commerce/src/main/java/com/eCommerceProject/dto/createDto/ProductCreateDto.java
+/home/baris/Belgeler/Intellij/E-Commerce/src/main/java/com/eCommerceProject/core/concretes/SuccessResult.java
+/home/baris/Belgeler/Intellij/E-Commerce/src/main/java/com/eCommerceProject/core/concretes/DataResult.java
+/home/baris/Belgeler/Intellij/E-Commerce/src/main/java/com/eCommerceProject/model/Category.java
+/home/baris/Belgeler/Intellij/E-Commerce/src/main/java/com/eCommerceProject/business/abstracts/ProductService.java
+/home/baris/Belgeler/Intellij/E-Commerce/src/main/java/com/eCommerceProject/dto/viewDto/UserViewDto.java
+/home/baris/Belgeler/Intellij/E-Commerce/src/main/java/com/eCommerceProject/model/User.java
+/home/baris/Belgeler/Intellij/E-Commerce/src/main/java/com/eCommerceProject/dataAccess/abstracts/ProductDao.java
+/home/baris/Belgeler/Intellij/E-Commerce/src/main/java/com/eCommerceProject/business/concretes/CategoryManager.java
+/home/baris/Belgeler/Intellij/E-Commerce/src/main/java/com/eCommerceProject/ECommerceProjectApplication.java
+/home/baris/Belgeler/Intellij/E-Commerce/src/main/java/com/eCommerceProject/dto/viewDto/ProductViewDto.java
+/home/baris/Belgeler/Intellij/E-Commerce/src/main/java/com/eCommerceProject/core/concretes/ErrorResult.java
+/home/baris/Belgeler/Intellij/E-Commerce/src/main/java/com/eCommerceProject/api/controller/CategoryController.java
