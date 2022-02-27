@@ -8,9 +8,11 @@ import com.eCommerceProject.model.Category;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.mongo.MongoAutoConfiguration;
+import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration;
 import org.springframework.context.annotation.Bean;
 
-@SpringBootApplication
+@SpringBootApplication(exclude = SecurityAutoConfiguration.class)
 public class ECommerceProjectApplication {
 
 	public static void main(String[] args) {
@@ -44,6 +46,13 @@ public class ECommerceProjectApplication {
 			product2.setStock(35);
 			productService.add(product);
 
+			ProductCreateDto product3 = new ProductCreateDto();
+			product3.setProductName("İphone 13");
+			product3.setProductBrand("Apple");
+			product3.setProductDetails("128GB Siyah renk Apple Türkiye 24 ay garantili");
+			product3.setProductPrice(1999.99);
+			product3.setStock(7);
+
 			Category category = new Category("Ev");
 			categoryService.add(category);
 			Category category1 = new Category("Bilgisayar");
@@ -61,6 +70,8 @@ public class ECommerceProjectApplication {
 
 		};
 
+
 	}
 
 }
+
