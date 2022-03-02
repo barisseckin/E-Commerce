@@ -43,3 +43,18 @@ Content-Length: 148
 }
 
 ````
+````
+GET /api/products/getAll HTTP/1.1
+Host: localhost:8080
+Content-Type: application/json
+Content-Length: 175
+
+{
+    "productName": "İphone 13",
+    "productBrand": "Apple",
+    "productDetails": "256GB Black Color Apple Türkiye Garantili",
+    "productPrice": 1949.99,
+    "stock": 9
+}
+````
+
