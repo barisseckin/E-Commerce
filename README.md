@@ -2,11 +2,11 @@
 <p>Technologies used in the construction of the project</p>
 <ul>
   <li>Spring Boot</li>
-  H2 Databse
-  Hibernate
-  Spring Data
-  Lombok
-  JUnit
+  <li>H2 Databse</li>
+  <li>Hibernate</li>
+  <li>Spring Data</li>
+  <li>Lombok</li>
+  <li>JUnit</li>
 </ul>
 
 <h3> Some available services </h3>
