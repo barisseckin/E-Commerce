@@ -1,7 +1,7 @@
 ## E-Commerce
 <p>Technologies used in the construction of the project</p>
 <ul>
-  Spring Boot
+  <li>Spring Boot</li>
   H2 Databse
   Hibernate
   Spring Data
