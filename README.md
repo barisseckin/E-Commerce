@@ -28,6 +28,18 @@
   
 </ul>  
 
+````
+POST /api/products/add HTTP/1.1
+Host: localhost:8080
+Content-Type: application/json
+Content-Length: 148
 
+{
+    "productName": "Java10",
+    "productBrand": "Kodlab",
+    "productDetails": "Java Egitim Seti",
+    "productPrice": 49.99,
+    "stock": 100
+}
 
-I'm planning to do the Front-end of the project with React. I will also make updates and edits to existing web Back-end services.
+````
