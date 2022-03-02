@@ -1,6 +1,6 @@
 ## E-Commerce
 <p>Technologies used in the construction of the project</p>
-```
+
   Spring Boot
   H2 Databse
   Hibernate
@@ -8,7 +8,6 @@
   Lombok
   JUnit
   
-```
 
 <h3> Some available services </h3>
 
