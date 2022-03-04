@@ -10,4 +10,5 @@ public class ProductCreateDto {
     private String productDetails;
     private double productPrice;
     private int stock;
+    private String productImageUrl;
 }

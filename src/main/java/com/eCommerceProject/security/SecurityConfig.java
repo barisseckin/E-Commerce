@@ -1,3 +1,4 @@
+/*
 package com.eCommerceProject.security;
 
 import org.springframework.beans.factory.annotation.Value;
@@ -39,3 +40,5 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .roles("USER");
     }
 }
+
+ */

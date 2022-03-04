@@ -27,7 +27,7 @@ public class ProductManager implements ProductService {
     public void add(ProductCreateDto productCreateDto) {
 
         this.productDao.save(new Product(productCreateDto.getProductName(), productCreateDto.getProductBrand(),
-                productCreateDto.getProductDetails(), productCreateDto.getProductPrice(), productCreateDto.getStock()));
+                productCreateDto.getProductDetails(), productCreateDto.getProductPrice(), productCreateDto.getStock(), productCreateDto.getProductImageUrl()));
 
     }
 

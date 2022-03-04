@@ -9,21 +9,21 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class ProductManagerTest {
 
-    private final Product product1 = new Product("Airpods", "Apple", "2. Nesil Airpods", 1500, 20);
-    private final Product product2 = new Product("Table", "IKEA", "Blue Color Launch Table", 400.99, 5);
+    private final Product product1 = new Product("Airpods", "Apple", "2. Nesil Airpods", 1500, 20, "");
+    private final Product product2 = new Product("Table", "IKEA", "Blue Color Launch Table", 400.99, 5, "");
 
 
     @Test
     void getAll() {
         assertEquals(new Product("Table", "IKEA",
-                "Blue Color Launch Table", 400.99, 5), product2);
+                "Blue Color Launch Table", 400.99, 5, ""), product2);
     }
 
     @Test
     @DisplayName("Product Add Testing Code")
     void add() {
         assertEquals(new Product("Airpods", "Apple",
-                "2. Nesil Airpods", 1500, 20), product1);
+                "2. Nesil Airpods", 1500, 20,""), product1);
     }
 
     @Test

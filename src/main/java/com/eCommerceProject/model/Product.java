@@ -33,17 +33,21 @@ public class Product {
     @Column(name = "stock")
     private int stock;
 
+    @Column(name = "image")
+    private String productImageUrl;
+
     /*
     @ManyToOne                   //i need to edit the test section
     private Category category;
     */
 
-    public Product(String productName, String productBrand, String productDetails, double productPrice, int stock) {
+    public Product(String productName, String productBrand, String productDetails, double productPrice, int stock, String productImageUrl) {
         this.productName = productName;
         this.productBrand = productBrand;
         this.productDetails = productDetails;
         this.productPrice = productPrice;
         this.stock = stock;
+        this.productImageUrl = productImageUrl;
     }
 
 }
