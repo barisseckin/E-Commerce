@@ -21,6 +21,8 @@ public class ProductController {
 
     private final ProductService productService;
 
+    private String productsName;
+
     @PostMapping("add")
     public ResponseEntity<?> add(@RequestBody @Valid ProductCreateDto productCreateDto) {
         this.productService.add(productCreateDto);
@@ -28,14 +30,26 @@ public class ProductController {
     }
 
     @GetMapping("getAll")
-    public ResponseEntity<List<Product>> getAll() {
+    public ResponseEntity<?> getAll() {
         final List<Product> products = productService.getAll();
+
+        if(products.size() <= 0) {
+            return ResponseEntity.ok(new GenericResponse("Kayitli urun bulunamadi!"));
+        }
         return ResponseEntity.ok(products);
     }
 
     @GetMapping("getByProductName/{productName}")
-    public List<Product> getByproductName(@PathVariable String productName) {
-        return this.productService.getByproductName(productName);
+    public ResponseEntity<?> getByproductName(@PathVariable String productName) {
+        List<Product> products = this.productService.getByproductName(productName);
+        for(Product product: products) {
+            this.productsName = product.getProductName();
+        }
+        if(!productName.equals(this.productsName)) {
+            return ResponseEntity.ok(new GenericResponse("Boyle bir urun bulunamadi!"));
+        }
+        return ResponseEntity.ok(products);
+
     }
 
     @GetMapping("getByProductBrand/{productBrand}")
@@ -49,9 +63,10 @@ public class ProductController {
         return ResponseEntity.ok(products);
     }
 
-    @DeleteMapping("deleteByid/{id}")
-    public void deleteByid(@PathVariable int id) {
+    @DeleteMapping("deleteById/{id}")
+    public ResponseEntity<?> deleteByid(@PathVariable int id) {
         this.productService.deleteById(id);
+        return ResponseEntity.ok(new GenericResponse("Deleted..."));
     }
 
     @GetMapping("getDto")
@@ -59,6 +74,4 @@ public class ProductController {
         List<ProductViewDto> products = this.productService.getDto();
         return ResponseEntity.ok(products);
     }
-
-
 }

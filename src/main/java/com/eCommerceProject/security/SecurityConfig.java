@@ -13,7 +13,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Value("${service-Admin_name}")
     private String ADMIN_NAME;
 
-    @Value("${serive-Admin_password}")
+    @Value("${service-Admin_password}")
     private String ADMIN_PASSWORD;
 
     @Value("${service-User_name}")

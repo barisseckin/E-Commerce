@@ -55,6 +55,4 @@ public class UserController {
         List<UserViewDto> users = this.userService.getUserViewDto();
         return ResponseEntity.ok(users);
     }
-
-
 }
