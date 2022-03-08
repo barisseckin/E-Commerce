@@ -21,8 +21,6 @@ public class ProductController {
 
     private final ProductService productService;
 
-    private String productsName;
-
     @PostMapping("add")
     public ResponseEntity<?> add(@RequestBody @Valid ProductCreateDto productCreateDto) {
         this.productService.add(productCreateDto);
@@ -32,7 +30,6 @@ public class ProductController {
     @GetMapping("getAll")
     public ResponseEntity<?> getAll() {
         final List<Product> products = productService.getAll();
-
         if(products.size() <= 0) {
             return ResponseEntity.ok(new GenericResponse("Kayitli urun bulunamadi!"));
         }
@@ -41,11 +38,12 @@ public class ProductController {
 
     @GetMapping("getByProductName/{productName}")
     public ResponseEntity<?> getByproductName(@PathVariable String productName) {
+        String productsName = "";
         List<Product> products = this.productService.getByproductName(productName);
         for(Product product: products) {
-            this.productsName = product.getProductName();
+            productsName = product.getProductName();
         }
-        if(!productName.equals(this.productsName)) {
+        if(!productName.equals(productsName)) {
             return ResponseEntity.ok(new GenericResponse("Boyle bir urun bulunamadi!"));
         }
         return ResponseEntity.ok(products);
