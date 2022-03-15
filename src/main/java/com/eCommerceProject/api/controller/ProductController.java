@@ -47,7 +47,6 @@ public class ProductController {
             return ResponseEntity.ok(new GenericResponse("Boyle bir urun bulunamadi!"));
         }
         return ResponseEntity.ok(products);
-
     }
 
     @GetMapping("getByProductBrand/{productBrand}")
@@ -68,8 +67,14 @@ public class ProductController {
     }
 
     @GetMapping("getDto")
-    public ResponseEntity<List<ProductViewDto>> getDto() {
+    public ResponseEntity<?> getDto() {
         List<ProductViewDto> products = this.productService.getDto();
-        return ResponseEntity.ok(products);
+        if(products.size() <= 0) {
+            return ResponseEntity.ok(new GenericResponse("Urun bulunamadi!"));
+        }
+        else {
+            return ResponseEntity.ok(products);
+        }
     }
+
 }

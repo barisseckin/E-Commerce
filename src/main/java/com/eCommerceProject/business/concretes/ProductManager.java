@@ -10,6 +10,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -25,10 +26,8 @@ public class ProductManager implements ProductService {
 
     @Override
     public void add(ProductCreateDto productCreateDto) {
-
         this.productDao.save(new Product(productCreateDto.getProductName(), productCreateDto.getProductBrand(),
                 productCreateDto.getProductDetails(), productCreateDto.getProductPrice(), productCreateDto.getStock(), productCreateDto.getProductImageUrl()));
-
     }
 
     @Override
@@ -48,18 +47,14 @@ public class ProductManager implements ProductService {
 
     @Override
     public List<Product> slice(Pageable pageable) {
-
         final List<Product> products = this.productDao.findAll(pageable).stream().collect(Collectors.toList());
         return products;
-
     }
 
     @Override
     public List<ProductViewDto> getDto() {
-
         final List<ProductViewDto> products = this.productDao.findAll().stream().map(ProductViewDto :: of).collect(Collectors.toList());
         return products;
-
     }
 
 }

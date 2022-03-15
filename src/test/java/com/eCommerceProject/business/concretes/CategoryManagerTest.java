@@ -26,8 +26,8 @@ class CategoryManagerTest {
         categoryService.add(new Category("Home"));
         categoryService.add(new Category("Computer"));
 
-        verify(categoryService).add(new Category("Home"));
-        verify(categoryService).add(new Category("Computer"));
+        verify(categoryService).add(new Category("Home" ));
+        verify(categoryService).add(new Category("Computer" ));
 
     }
 
