@@ -1,6 +1,7 @@
 package com.eCommerceProject.business.concretes;
 
 import com.eCommerceProject.business.abstracts.CategoryService;
+import com.eCommerceProject.dataAccess.abstracts.CategoryDao;
 import com.eCommerceProject.model.Category;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -16,7 +17,6 @@ class CategoryManagerTest {
     void getAll() {
         CategoryService categoryService = mock(CategoryService.class);
         List<Category> categories = categoryService.getAll();
-
     }
 
     @Test
