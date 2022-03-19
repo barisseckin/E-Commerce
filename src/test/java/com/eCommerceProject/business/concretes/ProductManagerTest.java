@@ -1,44 +1,36 @@
-
 package com.eCommerceProject.business.concretes;
 
-import com.eCommerceProject.model.Category;
-import com.eCommerceProject.model.Product;
-import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class ProductManagerTest {
 
-    private final Product product1 = new Product("Airpods", "Apple", "2. Nesil Airpods", 1500, 20, "");
-    private final Product product2 = new Product("Table", "IKEA", "Blue Color Launch Table", 400.99, 5, "");
-
-
     @Test
     void getAll() {
-        assertEquals(new Product("Table", "IKEA",
-                "Blue Color Launch Table", 400.99, 5, ""), product2);
     }
 
     @Test
-    @DisplayName("Product Add Testing Code")
     void add() {
-        assertEquals(new Product("Airpods", "Apple",
-                "2. Nesil Airpods", 1500, 20,""), product1);
     }
 
     @Test
     void getByproductName() {
-        assertEquals("Table", product2.getProductName());
     }
 
     @Test
     void getByproductBrand() {
-        assertEquals("Apple", product1.getProductBrand());
     }
 
     @Test
     void deleteById() {
     }
-}
 
+    @Test
+    void slice() {
+    }
+
+    @Test
+    void getDto() {
+    }
+}
