@@ -13,6 +13,11 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
+/**
+ * @author barisseckin
+ * @since 05.05.2022
+ */
+
 @ExtendWith(MockitoExtension.class)
 class ProductManagerTest {
 
