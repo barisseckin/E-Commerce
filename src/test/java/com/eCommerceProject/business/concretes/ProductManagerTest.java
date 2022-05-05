@@ -3,9 +3,7 @@ package com.eCommerceProject.business.concretes;
 import com.eCommerceProject.dataAccess.abstracts.ProductDao;
 import com.eCommerceProject.dto.createDto.ProductCreateDto;
 import com.eCommerceProject.model.Product;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Tag;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
@@ -24,6 +22,11 @@ class ProductManagerTest {
     @InjectMocks
     private ProductManager productManager;
 
+    @BeforeEach
+    void setUp () {
+
+    }
+
     @Test
     void testGetAll() {
     }
@@ -39,7 +42,6 @@ class ProductManagerTest {
         productCreateDto.setProductPrice(1000);
         productCreateDto.setProductImageUrl("Test-Url");
         productCreateDto.setStock(10);
-
         Product product = mock(Product.class);
 
         when(productDao.save(any(Product.class))).thenReturn(product);
@@ -51,15 +53,31 @@ class ProductManagerTest {
     }
 
     @Test
+    @DisplayName("get product name test")
+    @Tag("getByProductName")
     void testGetByproductName() {
+        String productName = "Test-Name";
+        productManager.getByproductName(productName);
+        verify(productDao).getByproductName(productName);
+
     }
 
     @Test
+    @DisplayName("get product brand test")
+    @Tag("getByProductBrand")
     void testGetByproductBrand() {
+        String productBrand = "Test-Brand";
+        productManager.getByproductBrand(productBrand);
+        verify(productDao).getByproductBrand(productBrand);
     }
 
     @Test
+    @DisplayName("product delete by id")
+    @Tag("deleteById")
     void testDeleteById() {
+        int id = 1;
+        productManager.deleteById(id);
+        verify(productDao).deleteById(id);
     }
 
     @Test
