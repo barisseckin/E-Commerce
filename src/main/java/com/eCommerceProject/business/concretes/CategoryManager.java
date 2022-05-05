@@ -20,8 +20,9 @@ public class CategoryManager implements CategoryService {
     }
 
     @Override
-    public void add(Category category) {
+    public Category add(Category category) {
         this.categoryDao.save(category);
+        return category;
     }
 
     @Override
