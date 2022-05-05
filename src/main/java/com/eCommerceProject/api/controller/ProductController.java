@@ -4,6 +4,7 @@ import com.eCommerceProject.business.abstracts.ProductService;
 import com.eCommerceProject.dto.createDto.ProductCreateDto;
 import com.eCommerceProject.dto.viewDto.ProductViewDto;
 import com.eCommerceProject.model.Product;
+import com.eCommerceProject.shared.ECommerceMessage;
 import com.eCommerceProject.shared.GenericResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Pageable;
@@ -24,14 +25,14 @@ public class ProductController {
     @PostMapping("add")
     public ResponseEntity<?> add(@RequestBody @Valid ProductCreateDto productCreateDto) {
         this.productService.add(productCreateDto);
-        return ResponseEntity.ok(new GenericResponse("Saved."));
+        return ResponseEntity.ok(ECommerceMessage.PRODUCT_SAVED);
     }
 
     @GetMapping("getAll")
     public ResponseEntity<?> getAll() {
         final List<Product> products = productService.getAll();
         if(products.size() <= 0) {
-            return ResponseEntity.ok(new GenericResponse("Kayitli urun bulunamadi!"));
+            return ResponseEntity.ok(ECommerceMessage.PRODUCT_NOT_FOUND);
         }
         return ResponseEntity.ok(products);
     }
@@ -44,7 +45,7 @@ public class ProductController {
             productsName = product.getProductName();
         }
         if(!productName.equals(productsName)) {
-            return ResponseEntity.ok(new GenericResponse("Boyle bir urun bulunamadi!"));
+            return ResponseEntity.ok(ECommerceMessage.NOT_FOUND_THIS_NAME);
         }
         return ResponseEntity.ok(products);
     }
@@ -63,14 +64,14 @@ public class ProductController {
     @DeleteMapping("deleteById/{id}")
     public ResponseEntity<?> deleteByid(@PathVariable int id) {
         this.productService.deleteById(id);
-        return ResponseEntity.ok(new GenericResponse("Deleted..."));
+        return ResponseEntity.ok(ECommerceMessage.PRODUCT_DELETED);
     }
 
     @GetMapping("getDto")
     public ResponseEntity<?> getDto() {
         List<ProductViewDto> products = this.productService.getDto();
         if(products.size() <= 0) {
-            return ResponseEntity.ok(new GenericResponse("Urun bulunamadi!"));
+            return ResponseEntity.ok(ECommerceMessage.PRODUCT_NOT_FOUND);
         }
         else {
             return ResponseEntity.ok(products);
