@@ -10,7 +10,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -25,9 +24,10 @@ public class ProductManager implements ProductService {
     }
 
     @Override
-    public void add(ProductCreateDto productCreateDto) {
+    public ProductCreateDto add(ProductCreateDto productCreateDto) {
         this.productDao.save(new Product(productCreateDto.getProductName(), productCreateDto.getProductBrand(),
                 productCreateDto.getProductDetails(), productCreateDto.getProductPrice(), productCreateDto.getStock(), productCreateDto.getProductImageUrl()));
+        return productCreateDto;
     }
 
     @Override
