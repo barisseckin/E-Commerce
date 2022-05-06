@@ -62,7 +62,7 @@ public class ProductManager implements ProductService {
     }
 
     @Override
-    public String addToCart(int id) {
+    public Cart addToCart(int id) {
         Product product = productDao.getById(id);
         Cart cart = new Cart();
         cart.setId(product.getId());
@@ -72,17 +72,27 @@ public class ProductManager implements ProductService {
         cart.setProductPrice(product.getProductPrice());
         cart.setProductImageUrl(product.getProductImageUrl());
 
-        int productStock = product.getStock();
-        product.setStock(productStock - 1);
+        cart.setQuantity(cart.getQuantity() + 1);
+        product.setStock(product.getStock() - 1);
+
+        if(product.getStock() == 0) {
+            productDao.deleteById(product.getId());
+        }
 
         cartDao.save(cart);
 
-        return cart.getProductName() + "Add to cart...";
+        return cart;
     }
 
     @Override
     public List<Cart> getCart() {
         return cartDao.findAll();
+    }
+
+    @Override
+    public void removeFromCart(int id) {
+        Cart cart = cartDao.getById(id);
+        cartDao.deleteById(cart.getId());
     }
 
 }

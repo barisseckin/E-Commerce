@@ -16,8 +16,8 @@ public interface ProductService {
     void deleteById(int id);
     List<Product> slice(Pageable pageable);
     List<ProductViewDto> getDto();
-
-    String addToCart(int id);
-
+    Cart addToCart(int id);
     List<Cart> getCart();
+    void removeFromCart(int id);
+
 }

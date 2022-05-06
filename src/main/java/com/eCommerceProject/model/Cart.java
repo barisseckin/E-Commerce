@@ -14,6 +14,9 @@ public class Cart {
     @Id
     private Integer id;
 
+    @Column(name = "quantity")
+    private int quantity;
+
     @Column(name = "productName")
     private String productName;
 

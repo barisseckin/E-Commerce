@@ -79,7 +79,7 @@ public class ProductController {
     }
 
     @PostMapping("addToCart/{id}")
-    public ResponseEntity<?> addToCart(@PathVariable int id) {
+    public ResponseEntity<?> addToCart(@RequestBody @PathVariable int id) {
         productService.addToCart(id);
         return ResponseEntity.ok("Add To Cart");
     }
@@ -87,6 +87,12 @@ public class ProductController {
     @GetMapping("getCart")
     public ResponseEntity<?> getCart() {
         return ResponseEntity.ok(productService.getCart());
+    }
+
+    @DeleteMapping("removeFromCart/{id}")
+    public ResponseEntity<?> removeFromCart(@PathVariable int id) {
+        productService.removeFromCart(id);
+        return ResponseEntity.ok("deleted...");
     }
 
 }
