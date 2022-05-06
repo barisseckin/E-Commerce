@@ -10,4 +10,8 @@ public interface ECommerceMessage {
 
     String NOT_FOUND_THIS_NAME = "No Product Found With This Name";
 
+    String ADD_TO_CART = "Urun sepete eklendi...";
+
+    String REMOVE_FROM_CART = "Urun sepetten silindi...";
+
 }
