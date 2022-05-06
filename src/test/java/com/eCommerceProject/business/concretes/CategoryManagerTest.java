@@ -9,6 +9,10 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+
+import java.util.Collections;
+import java.util.List;
+
 import static org.mockito.Mockito.*;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -29,6 +33,14 @@ class CategoryManagerTest {
 
     @Test
     void getAll() {
+        Category category = mock(Category.class);
+        category.setId(1);
+        category.setCategoryName("Test-Name");
+
+        when(categoryDao.findAll()).thenReturn(Collections.singletonList(category));
+        List<Category> categoryList = categoryManager.getAll();
+
+        assertEquals(categoryList.size(), 1);
     }
 
     @Test
