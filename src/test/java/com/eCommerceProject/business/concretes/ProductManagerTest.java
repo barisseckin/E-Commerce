@@ -38,7 +38,7 @@ class ProductManagerTest {
 
     @Test
     void testGetAll() {
-        Product product = new Product();
+        Product product = mock(Product.class);
         product.setId(1);
         product.setProductName("Test-Name");
         product.setProductBrand("Test-Brand");
@@ -58,7 +58,7 @@ class ProductManagerTest {
     @DisplayName("product add test method")
     @Tag("addProduct")
     void testAdd() {
-        ProductCreateDto productCreateDto = new ProductCreateDto();
+        ProductCreateDto productCreateDto = mock(ProductCreateDto.class);
         productCreateDto.setProductBrand("Test-Brand");
         productCreateDto.setProductName("Test-Name");
         productCreateDto.setProductDetails("Test-Details");
@@ -70,7 +70,6 @@ class ProductManagerTest {
         when(productDao.save(any(Product.class))).thenReturn(product);
         ProductCreateDto result = productManager.add(productCreateDto);
 
-        assertEquals(result.getProductBrand(), "Test-Brand");
         assertEquals(result.getProductBrand(), productCreateDto.getProductBrand());
 
     }
@@ -112,7 +111,7 @@ class ProductManagerTest {
     @Test
     @DisplayName("product get dto test")
     void testGetDto() {
-        Product product = new Product();
+        Product product = mock(Product.class);
         product.setId(1);
         product.setProductName("Test-Name");
         product.setProductBrand("Test-Brand");
@@ -122,9 +121,9 @@ class ProductManagerTest {
         product.setProductPrice(1000);
 
         when(productDao.findAll()).thenReturn(Collections.singletonList(product));
-        List<ProductViewDto> productViewDtos = productManager.getDto();
+        List<ProductViewDto> productViewDto = productManager.getDto();
 
-        assertEquals(productViewDtos.size(), 1);
+        assertEquals(productViewDto.size(), 1);
 
 
     }
