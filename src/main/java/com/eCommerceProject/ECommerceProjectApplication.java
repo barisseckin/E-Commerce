@@ -1,7 +1,7 @@
 package com.eCommerceProject;
 
-import com.eCommerceProject.business.abstracts.CategoryService;
-import com.eCommerceProject.business.abstracts.ProductService;
+import com.eCommerceProject.business.concretes.CategoryService;
+import com.eCommerceProject.business.concretes.ProductService;
 import com.eCommerceProject.dto.createDto.ProductCreateDto;
 import com.eCommerceProject.model.Category;
 import org.springframework.boot.CommandLineRunner;

@@ -1,4 +1,4 @@
-package com.eCommerceProject.business.abstracts;
+package com.eCommerceProject.business.concretes;
 
 import com.eCommerceProject.dto.createDto.ProductCreateDto;
 import com.eCommerceProject.dto.viewDto.ProductViewDto;

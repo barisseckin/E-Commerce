@@ -1,11 +1,10 @@
 package com.eCommerceProject.api.controller;
 
-import com.eCommerceProject.business.abstracts.ProductService;
+import com.eCommerceProject.business.concretes.ProductService;
 import com.eCommerceProject.dto.createDto.ProductCreateDto;
 import com.eCommerceProject.dto.viewDto.ProductViewDto;
 import com.eCommerceProject.model.Product;
 import com.eCommerceProject.shared.ECommerceMessage;
-import com.eCommerceProject.shared.GenericResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
@@ -81,7 +80,7 @@ public class ProductController {
     @PostMapping("addToCart/{id}")
     public ResponseEntity<?> addToCart(@RequestBody @PathVariable int id) {
         productService.addToCart(id);
-        return ResponseEntity.ok("Add To Cart");
+        return ResponseEntity.ok(ECommerceMessage.ADD_TO_CART);
     }
 
     @GetMapping("getCart")
@@ -92,7 +91,7 @@ public class ProductController {
     @DeleteMapping("removeFromCart/{id}")
     public ResponseEntity<?> removeFromCart(@PathVariable int id) {
         productService.removeFromCart(id);
-        return ResponseEntity.ok("deleted...");
+        return ResponseEntity.ok(ECommerceMessage.REMOVE_FROM_CART);
     }
 
 }

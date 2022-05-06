@@ -1,7 +1,6 @@
 package com.eCommerceProject.business.concretes;
 
-import com.eCommerceProject.business.abstracts.CategoryService;
-import com.eCommerceProject.dataAccess.abstracts.CategoryDao;
+import com.eCommerceProject.dataAccess.abstracts.CategoryRepository;
 import com.eCommerceProject.model.Category;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -10,24 +9,24 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
-public class CategoryManager implements CategoryService {
+public class CategoryServiceImpl implements CategoryService {
 
-    private final CategoryDao categoryDao;
+    private final CategoryRepository categoryRepository;
 
     @Override
     public List<Category> getAll() {
-        return this.categoryDao.findAll();
+        return this.categoryRepository.findAll();
     }
 
     @Override
     public Category add(Category category) {
-        this.categoryDao.save(category);
+        this.categoryRepository.save(category);
         return category;
     }
 
     @Override
     public List<Category> getByCategoryName(String categoryName) {
-        return this.categoryDao.getByCategoryName(categoryName);
+        return this.categoryRepository.getByCategoryName(categoryName);
     }
 
 }

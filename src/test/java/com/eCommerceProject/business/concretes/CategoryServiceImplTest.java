@@ -1,6 +1,6 @@
 package com.eCommerceProject.business.concretes;
 
-import com.eCommerceProject.dataAccess.abstracts.CategoryDao;
+import com.eCommerceProject.dataAccess.abstracts.CategoryRepository;
 import com.eCommerceProject.model.Category;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
@@ -23,13 +23,13 @@ import static org.junit.jupiter.api.Assertions.*;
  */
 
 @ExtendWith(MockitoExtension.class)
-class CategoryManagerTest {
+class CategoryServiceImplTest {
 
     @Mock
-    CategoryDao categoryDao;
+    CategoryRepository categoryRepository;
 
     @InjectMocks
-    CategoryManager categoryManager;
+    CategoryServiceImpl categoryServiceImpl;
 
     @Test
     void getAll() {
@@ -37,8 +37,8 @@ class CategoryManagerTest {
         category.setId(1);
         category.setCategoryName("Test-Name");
 
-        when(categoryDao.findAll()).thenReturn(Collections.singletonList(category));
-        List<Category> categoryList = categoryManager.getAll();
+        when(categoryRepository.findAll()).thenReturn(Collections.singletonList(category));
+        List<Category> categoryList = categoryServiceImpl.getAll();
 
         assertEquals(categoryList.size(), 1);
     }
@@ -51,8 +51,8 @@ class CategoryManagerTest {
         category.setId(1);
         category.setCategoryName("Home");
 
-        Category result = categoryManager.add(category);
-        verify(categoryDao).save(category);
+        Category result = categoryServiceImpl.add(category);
+        verify(categoryRepository).save(category);
         assertEquals(result.getCategoryName(), "Home");
     }
 
@@ -61,7 +61,7 @@ class CategoryManagerTest {
     @Tag("getByCategoryName")
     void getByCategoryName() {
         String categoryName = "Home";
-        categoryManager.getByCategoryName(categoryName);
-        verify(categoryDao).getByCategoryName(categoryName);
+        categoryServiceImpl.getByCategoryName(categoryName);
+        verify(categoryRepository).getByCategoryName(categoryName);
     }
 }

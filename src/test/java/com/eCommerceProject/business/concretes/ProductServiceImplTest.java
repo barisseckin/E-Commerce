@@ -1,6 +1,6 @@
 package com.eCommerceProject.business.concretes;
 
-import com.eCommerceProject.dataAccess.abstracts.ProductDao;
+import com.eCommerceProject.dataAccess.abstracts.ProductRepository;
 import com.eCommerceProject.dto.createDto.ProductCreateDto;
 import com.eCommerceProject.dto.viewDto.ProductViewDto;
 import com.eCommerceProject.model.Product;
@@ -10,7 +10,6 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
@@ -23,13 +22,13 @@ import static org.mockito.Mockito.*;
  */
 
 @ExtendWith(MockitoExtension.class)
-class ProductManagerTest {
+class ProductServiceImplTest {
 
     @Mock
-    private ProductDao productDao;
+    private ProductRepository productRepository;
 
     @InjectMocks
-    private ProductManager productManager;
+    private ProductServiceImpl productServiceImpl;
 
     @BeforeEach
     void setUp () {
@@ -47,8 +46,8 @@ class ProductManagerTest {
         product.setStock(10);
         product.setProductPrice(1000);
 
-        when(productDao.findAll()).thenReturn(Collections.singletonList(product));
-        List<Product> productList = productManager.getAll();
+        when(productRepository.findAll()).thenReturn(Collections.singletonList(product));
+        List<Product> productList = productServiceImpl.getAll();
 
         assertEquals(productList.size(), 1);
 
@@ -67,8 +66,8 @@ class ProductManagerTest {
         productCreateDto.setStock(10);
         Product product = mock(Product.class);
 
-        when(productDao.save(any(Product.class))).thenReturn(product);
-        ProductCreateDto result = productManager.add(productCreateDto);
+        when(productRepository.save(any(Product.class))).thenReturn(product);
+        ProductCreateDto result = productServiceImpl.add(productCreateDto);
 
         assertEquals(result.getProductBrand(), productCreateDto.getProductBrand());
 
@@ -79,8 +78,8 @@ class ProductManagerTest {
     @Tag("getByProductName")
     void testGetByproductName() {
         String productName = "Test-Name";
-        productManager.getByproductName(productName);
-        verify(productDao).getByproductName(productName);
+        productServiceImpl.getByproductName(productName);
+        verify(productRepository).getByproductName(productName);
 
     }
 
@@ -89,8 +88,8 @@ class ProductManagerTest {
     @Tag("getByProductBrand")
     void testGetByproductBrand() {
         String productBrand = "Test-Brand";
-        productManager.getByproductBrand(productBrand);
-        verify(productDao).getByproductBrand(productBrand);
+        productServiceImpl.getByproductBrand(productBrand);
+        verify(productRepository).getByproductBrand(productBrand);
 
     }
 
@@ -99,8 +98,8 @@ class ProductManagerTest {
     @Tag("deleteById")
     void testDeleteById() {
         int id = 1;
-        productManager.deleteById(id);
-        verify(productDao).deleteById(id);
+        productServiceImpl.deleteById(id);
+        verify(productRepository).deleteById(id);
     }
 
     @Test
@@ -120,8 +119,8 @@ class ProductManagerTest {
         product.setStock(10);
         product.setProductPrice(1000);
 
-        when(productDao.findAll()).thenReturn(Collections.singletonList(product));
-        List<ProductViewDto> productViewDto = productManager.getDto();
+        when(productRepository.findAll()).thenReturn(Collections.singletonList(product));
+        List<ProductViewDto> productViewDto = productServiceImpl.getDto();
 
         assertEquals(productViewDto.size(), 1);
 
