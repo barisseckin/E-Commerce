@@ -78,4 +78,15 @@ public class ProductController {
         }
     }
 
+    @PostMapping("addToCart/{id}")
+    public ResponseEntity<?> addToCart(@PathVariable int id) {
+        productService.addToCart(id);
+        return ResponseEntity.ok("Add To Cart");
+    }
+
+    @GetMapping("getCart")
+    public ResponseEntity<?> getCart() {
+        return ResponseEntity.ok(productService.getCart());
+    }
+
 }

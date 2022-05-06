@@ -2,6 +2,7 @@ package com.eCommerceProject.business.abstracts;
 
 import com.eCommerceProject.dto.createDto.ProductCreateDto;
 import com.eCommerceProject.dto.viewDto.ProductViewDto;
+import com.eCommerceProject.model.Cart;
 import com.eCommerceProject.model.Product;
 import org.springframework.data.domain.Pageable;
 
@@ -15,4 +16,8 @@ public interface ProductService {
     void deleteById(int id);
     List<Product> slice(Pageable pageable);
     List<ProductViewDto> getDto();
+
+    String addToCart(int id);
+
+    List<Cart> getCart();
 }

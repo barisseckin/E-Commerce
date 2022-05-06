@@ -1,9 +1,11 @@
 package com.eCommerceProject.business.concretes;
 
 import com.eCommerceProject.business.abstracts.ProductService;;
+import com.eCommerceProject.dataAccess.abstracts.CartDao;
 import com.eCommerceProject.dataAccess.abstracts.ProductDao;
 import com.eCommerceProject.dto.createDto.ProductCreateDto;
 import com.eCommerceProject.dto.viewDto.ProductViewDto;
+import com.eCommerceProject.model.Cart;
 import com.eCommerceProject.model.Product;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Pageable;
@@ -17,6 +19,8 @@ import java.util.stream.Collectors;
 public class ProductManager implements ProductService {
 
     private final ProductDao productDao;
+
+    private final CartDao cartDao;
 
     @Override
     public List<Product> getAll() {
@@ -55,6 +59,30 @@ public class ProductManager implements ProductService {
     public List<ProductViewDto> getDto() {
         final List<ProductViewDto> products = this.productDao.findAll().stream().map(ProductViewDto :: of).collect(Collectors.toList());
         return products;
+    }
+
+    @Override
+    public String addToCart(int id) {
+        Product product = productDao.getById(id);
+        Cart cart = new Cart();
+        cart.setId(product.getId());
+        cart.setProductBrand(product.getProductBrand());
+        cart.setProductName(product.getProductName());
+        cart.setProductDetails(product.getProductDetails());
+        cart.setProductPrice(product.getProductPrice());
+        cart.setProductImageUrl(product.getProductImageUrl());
+
+        int productStock = product.getStock();
+        product.setStock(productStock - 1);
+
+        cartDao.save(cart);
+
+        return cart.getProductName() + "Add to cart...";
+    }
+
+    @Override
+    public List<Cart> getCart() {
+        return cartDao.findAll();
     }
 
 }
