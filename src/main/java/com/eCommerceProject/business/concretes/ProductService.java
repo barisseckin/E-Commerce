@@ -19,5 +19,4 @@ public interface ProductService {
     Cart addToCart(int id);
     List<Cart> getCart();
     void removeFromCart(int id);
-
 }

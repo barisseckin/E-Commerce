@@ -14,4 +14,5 @@ public interface UserService {
     List<User> slice(Pageable pageable);
     void deleteById(int id);
     List<UserViewDto> getUserViewDto();
+    User getByUserName(String userName);
 }

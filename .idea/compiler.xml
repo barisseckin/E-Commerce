@@ -9,6 +9,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="E-Commerce" />
         <module name="e-commerce-project" />
+        <module name="eCommerceProject" />
       </profile>
     </annotationProcessing>
   </component>
@@ -16,6 +17,7 @@
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="E-Commerce" options="-parameters" />
       <module name="e-commerce-project" options="-parameters" />
+      <module name="eCommerceProject" options="-parameters" />
     </option>
   </component>
 </project>
