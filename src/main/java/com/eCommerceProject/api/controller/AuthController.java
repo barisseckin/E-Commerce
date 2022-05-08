@@ -1,5 +1,7 @@
 package com.eCommerceProject.api.controller;
 
+import com.eCommerceProject.business.concretes.SendEmailService;
+import com.eCommerceProject.business.concretes.SendEmailServiceImpl;
 import com.eCommerceProject.business.concretes.UserService;
 import com.eCommerceProject.request.UserCreateRequest;
 import com.eCommerceProject.model.User;
@@ -16,6 +18,8 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
+import javax.mail.internet.AddressException;
+
 @RestController
 @RequestMapping("/api/auth")
 @CrossOrigin
@@ -29,12 +33,15 @@ public class AuthController {
 
     private final PasswordEncoder passwordEncoder;
 
+    private final SendEmailService sendEmailService;
+
     @Autowired
-    public AuthController(AuthenticationManager authenticationManager, JwtTokenProvider jwtTokenProvider, UserService userService, PasswordEncoder passwordEncoder) {
+    public AuthController(AuthenticationManager authenticationManager, JwtTokenProvider jwtTokenProvider, UserService userService, PasswordEncoder passwordEncoder, SendEmailService sendEmailService) {
         this.authenticationManager =authenticationManager;
         this.passwordEncoder = passwordEncoder;
         this.userService = userService;
         this.jwtTokenProvider = jwtTokenProvider;
+        this.sendEmailService = sendEmailService;
     }
 
     @PostMapping("/login")
@@ -47,7 +54,7 @@ public class AuthController {
     }
 
     @PostMapping("/register")
-    public ResponseEntity<String> register(@RequestBody UserCreateRequest user) {
+    public ResponseEntity<String> register(@RequestBody UserCreateRequest user) throws AddressException {
         if(userService.getByUserName(user.getUserName()) != null) {
             return new ResponseEntity<>(ECommerceMessage.USERNAME_ALREADY_IN_USE, HttpStatus.BAD_REQUEST);
         }
@@ -57,7 +64,7 @@ public class AuthController {
         newUser.setPassword(passwordEncoder.encode(user.getPassword()));
         newUser.setEMail(user.getEMail());
         userService.add(newUser);
-
+        sendEmailService.sendEmails(String.valueOf(user.getEMail()), ECommerceMessage.REGISTER_BODY, ECommerceMessage.REGISTER_TOPIC + ECommerceMessage.REGISTER_TOPIC_EMOGI);
         return new ResponseEntity<>(ECommerceMessage.USER_CREATED, HttpStatus.CREATED);
     }
 
