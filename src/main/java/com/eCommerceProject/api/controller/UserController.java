@@ -1,7 +1,6 @@
 package com.eCommerceProject.api.controller;
 
 import com.eCommerceProject.business.concretes.UserService;
-import com.eCommerceProject.dto.createDto.UserCreateDto;
 import com.eCommerceProject.dto.viewDto.UserViewDto;
 import com.eCommerceProject.model.User;
 import com.eCommerceProject.shared.GenericResponse;

@@ -1,12 +1,11 @@
 package com.eCommerceProject.api.controller;
 
 import com.eCommerceProject.business.concretes.UserService;
-import com.eCommerceProject.dto.createDto.UserCreateDto;
+import com.eCommerceProject.request.UserCreateRequest;
 import com.eCommerceProject.model.User;
-import com.eCommerceProject.request.UserRequest;
+import com.eCommerceProject.request.UserLoginRequest;
 import com.eCommerceProject.security.JwtTokenProvider;
 import com.eCommerceProject.shared.ECommerceMessage;
-import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -39,7 +38,7 @@ public class AuthController {
     }
 
     @PostMapping("/login")
-    public String login(@RequestBody UserRequest loginRequest) {
+    public String login(@RequestBody UserLoginRequest loginRequest) {
         UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(loginRequest.getUserName(), loginRequest.getPassword());
         Authentication auth = authenticationManager.authenticate(authenticationToken);
         SecurityContextHolder.getContext().setAuthentication(auth);
@@ -48,7 +47,7 @@ public class AuthController {
     }
 
     @PostMapping("/register")
-    public ResponseEntity<String> register(@RequestBody UserCreateDto user) {
+    public ResponseEntity<String> register(@RequestBody UserCreateRequest user) {
         if(userService.getByUserName(user.getUserName()) != null) {
             return new ResponseEntity<>(ECommerceMessage.USERNAME_ALREADY_IN_USE, HttpStatus.BAD_REQUEST);
         }

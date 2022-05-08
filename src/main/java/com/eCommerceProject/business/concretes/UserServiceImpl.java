@@ -1,7 +1,6 @@
 package com.eCommerceProject.business.concretes;
 
 import com.eCommerceProject.dataAccess.abstracts.UserRepository;
-import com.eCommerceProject.dto.createDto.UserCreateDto;
 import com.eCommerceProject.dto.viewDto.UserViewDto;
 import com.eCommerceProject.model.User;
 import lombok.RequiredArgsConstructor;
