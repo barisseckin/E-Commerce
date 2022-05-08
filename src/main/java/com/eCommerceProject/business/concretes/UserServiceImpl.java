@@ -18,7 +18,7 @@ public class UserServiceImpl implements UserService {
     private final UserRepository userRepository;
 
     @Override
-    public void add(UserCreateDto userCreateDto) {
+    public void add(User userCreateDto) {
          this.userRepository.save(new User(userCreateDto.getUserName(),
                 userCreateDto.getPassword(), userCreateDto.getEMail()));
     }
@@ -51,5 +51,10 @@ public class UserServiceImpl implements UserService {
         final List<UserViewDto> users = this.userRepository.findAll().stream().map(UserViewDto::of).collect(Collectors.toList());
         return users;
     }
+
+   @Override
+    public User getByUserName(String userName) {
+        return userRepository.findByUserName(userName);
+   }
 
 }

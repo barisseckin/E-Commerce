@@ -22,7 +22,7 @@ public class UserController {
     private final UserService userService;
 
     @PostMapping("add")
-    public ResponseEntity<?> add(@RequestBody @Valid UserCreateDto userCreateDto) {
+    public ResponseEntity<?> add(@RequestBody @Valid User userCreateDto) {
         this.userService.add(userCreateDto);
         return ResponseEntity.ok(new GenericResponse("User Created."));
     }
