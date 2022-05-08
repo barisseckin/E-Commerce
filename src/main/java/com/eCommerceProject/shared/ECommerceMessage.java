@@ -1,5 +1,7 @@
 package com.eCommerceProject.shared;
 
+import java.util.Date;
+
 public interface ECommerceMessage {
 
     String PRODUCT_NOT_FOUND = "Product Not Found!";
@@ -22,5 +24,9 @@ public interface ECommerceMessage {
 
     String REGISTER_BODY = "We are happy to have you among us, you are sure to find great discount deals";
 
-    String REGISTER_TOPIC_EMOGI = new String(Character.toChars(0x1f60d	));
+    String REGISTER_TOPIC_EMOJI = new String(Character.toChars(0x1f60d	));
+
+    String LOGIN_TOPIC = "New Login Process!";
+
+    String LOGIN_BODY = String.valueOf(new Date().getTime() + "If you are not logged in on this date, we recommend that you change your password.");
 }
