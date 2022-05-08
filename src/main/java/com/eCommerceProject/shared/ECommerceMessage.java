@@ -17,4 +17,10 @@ public interface ECommerceMessage {
     String USER_CREATED = "User Created";
 
     String USERNAME_ALREADY_IN_USE = "Username Already In Use!";
+
+    String REGISTER_TOPIC = "Welcome To Tiklakapinda";
+
+    String REGISTER_BODY = "We are happy to have you among us, you are sure to find great discount deals";
+
+    String REGISTER_TOPIC_EMOGI = new String(Character.toChars(0x1f60d	));
 }
