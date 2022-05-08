@@ -26,4 +26,7 @@ public interface ECommerceMessage {
 
     String REGISTER_TOPIC_EMOJI = new String(Character.toChars(0x1f60d	));
 
+    String LOGIN_TOPIC = "New Login Process!";
+
+    String LOGIN_BODY = String.valueOf(new Date().getTime() + "If you are not logged in on this date, we recommend that you change your password.");
 }
