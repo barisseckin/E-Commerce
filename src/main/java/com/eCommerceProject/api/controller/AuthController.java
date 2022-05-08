@@ -50,6 +50,8 @@ public class AuthController {
         Authentication auth = authenticationManager.authenticate(authenticationToken);
         SecurityContextHolder.getContext().setAuthentication(auth);
         String jwtToken = jwtTokenProvider.generateJwtToken(auth);
+        User user = userService.getByUserName(loginRequest.getUserName());
+        sendEmailService.sendEmails(user.getEMail(), ECommerceMessage.LOGIN_BODY, ECommerceMessage.LOGIN_TOPIC);
         return "Bearer " + jwtToken;
     }
 
