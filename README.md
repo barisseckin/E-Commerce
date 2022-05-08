@@ -9,6 +9,7 @@
   <li>Lombok</li>
   <li>JUnit</li>
   <li>Mockito</li>
+<li>Spring Mail Sender</li>
 </ul>
 
  
