@@ -29,4 +29,13 @@ public interface ECommerceMessage {
     String LOGIN_TOPIC = "New Login Process!";
 
     String LOGIN_BODY = String.valueOf(new Date().toString() + " If you are not logged in on this date, we recommend that you change your password.");
+
+    String AUTH_DELETE_TOPIC = " We are sorry you left us ";
+
+    String AUTH_DELETE_TOPIC_EMOJI = new String(Character.toChars(0x1f615));
+
+    String AUTH_DELETE_BODY = "Please let us know what caused you to make this decision";
+
+    String USER_DELETED= "User Deleted";
+
 }

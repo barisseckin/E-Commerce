@@ -3,6 +3,7 @@ package com.eCommerceProject.business.concretes;
 import com.eCommerceProject.dataAccess.abstracts.UserRepository;
 import com.eCommerceProject.dto.viewDto.UserViewDto;
 import com.eCommerceProject.model.User;
+import com.eCommerceProject.request.UserDeleteRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -56,4 +57,9 @@ public class UserServiceImpl implements UserService {
         return userRepository.findByUserName(userName);
    }
 
+    @Override
+    public void authDeleteByUser(UserDeleteRequest userDeleteRequest) {
+        User user = userRepository.findByEMail(userDeleteRequest.getEMail());
+        userRepository.deleteById(user.getId());
+    }
 }

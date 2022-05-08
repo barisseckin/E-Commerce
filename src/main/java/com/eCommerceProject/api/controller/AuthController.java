@@ -5,6 +5,7 @@ import com.eCommerceProject.business.concretes.SendEmailServiceImpl;
 import com.eCommerceProject.business.concretes.UserService;
 import com.eCommerceProject.request.UserCreateRequest;
 import com.eCommerceProject.model.User;
+import com.eCommerceProject.request.UserDeleteRequest;
 import com.eCommerceProject.request.UserLoginRequest;
 import com.eCommerceProject.security.JwtTokenProvider;
 import com.eCommerceProject.shared.ECommerceMessage;
@@ -70,5 +71,11 @@ public class AuthController {
         return new ResponseEntity<>(ECommerceMessage.USER_CREATED, HttpStatus.CREATED);
     }
 
+    @DeleteMapping("/deleteByUser")
+    public ResponseEntity<?> deleteByUser(@RequestBody UserDeleteRequest userDeleteRequest) {
+        userService.authDeleteByUser(userDeleteRequest);
+        sendEmailService.sendEmails(userDeleteRequest.getEMail(), ECommerceMessage.AUTH_DELETE_BODY, ECommerceMessage.AUTH_DELETE_TOPIC + ECommerceMessage.AUTH_DELETE_TOPIC_EMOJI);
+        return new ResponseEntity<>(ECommerceMessage.USER_DELETED, HttpStatus.OK);
+    }
 
 }
