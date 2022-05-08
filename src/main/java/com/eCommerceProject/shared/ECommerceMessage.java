@@ -28,5 +28,5 @@ public interface ECommerceMessage {
 
     String LOGIN_TOPIC = "New Login Process!";
 
-    String LOGIN_BODY = String.valueOf(new Date().getTime() + "If you are not logged in on this date, we recommend that you change your password.");
+    String LOGIN_BODY = String.valueOf(new Date().toString() + "If you are not logged in on this date, we recommend that you change your password.");
 }
