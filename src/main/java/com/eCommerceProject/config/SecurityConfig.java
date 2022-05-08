@@ -80,11 +80,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .exceptionHandling().authenticationEntryPoint(handler).and()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
                 .authorizeRequests()
-                .antMatchers(HttpMethod.GET, "/posts")
+                .antMatchers(HttpMethod.GET, "/api/**")
                 .permitAll()
-                .antMatchers(HttpMethod.GET, "/comments")
+                .antMatchers(HttpMethod.POST, "/api/**")
                 .permitAll()
-                .antMatchers("/auth/**")
+                .antMatchers("/api/**")
                 .permitAll()
                 .anyRequest().authenticated();
 

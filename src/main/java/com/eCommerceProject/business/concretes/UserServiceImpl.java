@@ -18,7 +18,7 @@ public class UserServiceImpl implements UserService {
     private final UserRepository userRepository;
 
     @Override
-    public void add(UserCreateDto userCreateDto) {
+    public void add(User userCreateDto) {
          this.userRepository.save(new User(userCreateDto.getUserName(),
                 userCreateDto.getPassword(), userCreateDto.getEMail()));
     }

@@ -6,6 +6,7 @@ import com.eCommerceProject.model.User;
 import com.eCommerceProject.request.UserRequest;
 import com.eCommerceProject.security.JwtTokenProvider;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -16,18 +17,25 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/auth")
-@RequiredArgsConstructor
+@RequestMapping("/api/auth")
 @CrossOrigin
 public class AuthController {
 
-    private AuthenticationManager authenticationManager;
+    private final AuthenticationManager authenticationManager;
 
-    private JwtTokenProvider jwtTokenProvider;
+    private final JwtTokenProvider jwtTokenProvider;
 
-    private UserService userService;
+    private final UserService userService;
 
-    private PasswordEncoder passwordEncoder;
+    private final PasswordEncoder passwordEncoder;
+
+    @Autowired
+    public AuthController(AuthenticationManager authenticationManager, JwtTokenProvider jwtTokenProvider, UserService userService, PasswordEncoder passwordEncoder) {
+        this.authenticationManager =authenticationManager;
+        this.passwordEncoder = passwordEncoder;
+        this.userService = userService;
+        this.jwtTokenProvider = jwtTokenProvider;
+    }
 
     @PostMapping("/login")
     public String login(@RequestBody UserRequest loginRequest) {
@@ -39,14 +47,14 @@ public class AuthController {
     }
 
     @PostMapping("/register")
-    public ResponseEntity<String> register(@RequestBody User user) {
+    public ResponseEntity<String> register(@RequestBody UserCreateDto user) {
         if(userService.getByUserName(user.getUserName()) != null) {
             return new ResponseEntity<>("Username already in use...", HttpStatus.BAD_REQUEST);
         }
 
-        UserCreateDto newUser = new UserCreateDto();
+        User newUser = new User();
         newUser.setUserName(user.getUserName());
-        newUser.setPassword(user.getPassword());
+        newUser.setPassword(passwordEncoder.encode(user.getPassword()));
         newUser.setEMail(user.getEMail());
         userService.add(newUser);
 
