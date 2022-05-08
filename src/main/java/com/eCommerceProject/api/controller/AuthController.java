@@ -5,6 +5,7 @@ import com.eCommerceProject.dto.createDto.UserCreateDto;
 import com.eCommerceProject.model.User;
 import com.eCommerceProject.request.UserRequest;
 import com.eCommerceProject.security.JwtTokenProvider;
+import com.eCommerceProject.shared.ECommerceMessage;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -49,7 +50,7 @@ public class AuthController {
     @PostMapping("/register")
     public ResponseEntity<String> register(@RequestBody UserCreateDto user) {
         if(userService.getByUserName(user.getUserName()) != null) {
-            return new ResponseEntity<>("Username already in use...", HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>(ECommerceMessage.USERNAME_ALREADY_IN_USE, HttpStatus.BAD_REQUEST);
         }
 
         User newUser = new User();
@@ -58,7 +59,7 @@ public class AuthController {
         newUser.setEMail(user.getEMail());
         userService.add(newUser);
 
-        return new ResponseEntity<>("user created...", HttpStatus.CREATED);
+        return new ResponseEntity<>(ECommerceMessage.USER_CREATED, HttpStatus.CREATED);
     }
 
 
