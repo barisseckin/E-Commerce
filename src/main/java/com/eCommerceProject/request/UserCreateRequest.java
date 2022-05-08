@@ -1,9 +1,9 @@
-package com.eCommerceProject.dto.createDto;
+package com.eCommerceProject.request;
 
 import lombok.Data;
 
 @Data
-public class UserCreateDto {
+public class UserCreateRequest {
 
     private String userName;
     private String password;
