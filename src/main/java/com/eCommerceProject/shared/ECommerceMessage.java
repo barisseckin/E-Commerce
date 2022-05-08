@@ -26,4 +26,6 @@ public interface ECommerceMessage {
 
     String REGISTER_TOPIC_EMOJI = new String(Character.toChars(0x1f60d	));
 
+
+
 }
