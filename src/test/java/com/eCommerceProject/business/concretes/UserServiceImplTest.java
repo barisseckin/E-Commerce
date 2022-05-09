@@ -73,6 +73,8 @@ class UserServiceImplTest {
 
     @Test
     void getUserViewDto() {
+        userService.getUserViewDto();
+        verify(userRepository).findAll();
     }
 
     @Test
@@ -84,7 +86,6 @@ class UserServiceImplTest {
 
     @Test
     void authDeleteByUser() {
-
 
     }
 }
