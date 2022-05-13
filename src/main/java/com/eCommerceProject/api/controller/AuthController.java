@@ -19,6 +19,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 import javax.mail.internet.AddressException;
+import java.util.Date;
 
 @RestController
 @RequestMapping("/api/auth")
@@ -65,6 +66,7 @@ public class AuthController {
         newUser.setUserName(user.getUserName());
         newUser.setPassword(passwordEncoder.encode(user.getPassword()));
         newUser.setEMail(user.getEMail());
+        newUser.setUserCreateDate(new Date());
         userService.add(newUser);
         sendEmailService.sendEmails(String.valueOf(user.getEMail()), ECommerceMessage.REGISTER_BODY, ECommerceMessage.REGISTER_TOPIC + ECommerceMessage.REGISTER_TOPIC_EMOJI);
         return new ResponseEntity<>(ECommerceMessage.USER_CREATED, HttpStatus.CREATED);
