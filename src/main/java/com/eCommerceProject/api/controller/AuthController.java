@@ -58,8 +58,8 @@ public class AuthController {
 
     @PostMapping("/register")
     public ResponseEntity<String> register(@RequestBody UserCreateRequest user) throws AddressException {
-        if(userService.getByUserName(user.getUserName()) != null) {
-            return new ResponseEntity<>(ECommerceMessage.USERNAME_ALREADY_IN_USE, HttpStatus.BAD_REQUEST);
+        if(userService.findByEMail(user.getEMail()) != null) {
+            return new ResponseEntity<>(ECommerceMessage.EMAIL_ALREADY_IN_USE, HttpStatus.BAD_REQUEST);
         }
 
         User newUser = new User();

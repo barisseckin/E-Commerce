@@ -16,4 +16,5 @@ public interface UserService {
     List<UserViewDto> getUserViewDto();
     User getByUserName(String userName);
     void authDeleteByUser(UserDeleteRequest userDeleteRequest);
+    User findByEMail(String eMail);
 }
