@@ -1,6 +1,6 @@
 package com.eCommerceProject.api.controller;
 
-import com.eCommerceProject.business.concretes.ProductService;
+import com.eCommerceProject.service.ProductService;
 import com.eCommerceProject.dto.createDto.ProductCreateDto;
 import com.eCommerceProject.dto.viewDto.ProductViewDto;
 import com.eCommerceProject.model.Product;

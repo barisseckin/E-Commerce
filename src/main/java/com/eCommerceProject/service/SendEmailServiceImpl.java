@@ -1,4 +1,4 @@
-package com.eCommerceProject.business.concretes;
+package com.eCommerceProject.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;

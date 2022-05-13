@@ -1,6 +1,6 @@
 package com.eCommerceProject.api.controller;
 
-import com.eCommerceProject.business.concretes.CategoryService;
+import com.eCommerceProject.service.CategoryService;
 import com.eCommerceProject.model.Category;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;

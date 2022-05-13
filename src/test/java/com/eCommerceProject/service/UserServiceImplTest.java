@@ -1,10 +1,7 @@
-package com.eCommerceProject.business.concretes;
+package com.eCommerceProject.service;
 
 import com.eCommerceProject.dataAccess.abstracts.UserRepository;
 import com.eCommerceProject.model.User;
-import com.eCommerceProject.request.UserCreateRequest;
-import com.eCommerceProject.request.UserDeleteRequest;
-import org.hibernate.mapping.Collection;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;

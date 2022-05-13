@@ -1,8 +1,7 @@
 package com.eCommerceProject.api.controller;
 
-import com.eCommerceProject.business.concretes.SendEmailService;
-import com.eCommerceProject.business.concretes.SendEmailServiceImpl;
-import com.eCommerceProject.business.concretes.UserService;
+import com.eCommerceProject.service.SendEmailService;
+import com.eCommerceProject.service.UserService;
 import com.eCommerceProject.request.UserCreateRequest;
 import com.eCommerceProject.model.User;
 import com.eCommerceProject.request.UserDeleteRequest;
