@@ -8,6 +8,7 @@
   <li>Spring Security</li>
   <li>Spring Data</li>
   <li>Lombok</li>
+  <li>Dockerfile</li>
   <li>JUnit</li>
   <li>Mockito</li>
 <li>Spring Mail Sender</li>
@@ -42,6 +43,62 @@ Content-Length: 175
     "productPrice": 23949.99,
     "stock": 9
 }
+````
+
+
+````
+-------------> Auth Register Api:
+````
+````
+localhost:8080/api/auth/register
+````
+````
+localhost:8080/api/auth/login
+````
+````
+localhost:8080/api/auth/deleteByUser
+````
+````
+--------------> Product Api:
+````
+````
+localhost:8080/api/products/add
+````
+````
+localhost:8080/api/products/getAll
+````
+````
+localhost:8080/api/products/getByProductBrand
+````
+````
+localhost:8080/api/products/slice
+````
+````
+localhost:8080/api/products/deleteById
+````
+````
+localhost:8080/api/products/getDto
+````
+````
+localhost:8080/api/products/addToCart
+````
+````
+localhost:8080/api/products/getCart
+````
+````
+localhost:8080/api/products/removeFromCart
+````
+````
+--------------> Category Api:
+````
+````
+localhost:8080/api/categorys/getAll
+````
+````
+localhost:8080/api/categorys/add
+````
+````
+localhost:8080/api/categorys/getByCategoryName
 ````
 
 <p>
