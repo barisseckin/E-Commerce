@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
+import java.util.Date;
 
 
 @Data
@@ -30,11 +31,14 @@ public class User {
     @Column(name = "email")
     private String eMail;
 
+    @Column(name = "createDate")
+    private Date userCreateDate;
 
-    public User(String userName, String password, String eMail) {
+    public User(String userName, String password, String eMail, Date userCreateDate) {
         this.userName = userName;
         this.password = password;
         this.eMail = eMail;
+        this.userCreateDate = userCreateDate;
     }
 
 }
