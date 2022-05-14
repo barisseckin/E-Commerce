@@ -2,7 +2,9 @@ package com.eCommerceProject.api.controller;
 
 import com.eCommerceProject.service.CategoryService;
 import com.eCommerceProject.model.Category;
+import com.eCommerceProject.shared.ECommerceMessage;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -21,8 +23,9 @@ public class CategoryController {
     }
 
     @PostMapping("add")
-    public void add(@RequestBody Category category) {
+    public ResponseEntity<?> add(@RequestBody Category category) {
         this.categoryService.add(category);
+        return ResponseEntity.ok(ECommerceMessage.CATEGORY_NAME_ALREADY_IN_USE);
     }
 
     @GetMapping("getByCategoryName")

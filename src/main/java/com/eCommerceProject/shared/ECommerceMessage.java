@@ -40,4 +40,6 @@ public interface ECommerceMessage {
 
     String USER_DELETED= "User Deleted";
 
+    String CATEGORY_NAME_ALREADY_IN_USE = "Category Name Already In Use!";
+
 }
