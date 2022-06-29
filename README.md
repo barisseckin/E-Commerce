@@ -45,62 +45,6 @@ Content-Length: 175
 }
 ````
 
-
-````
--------------> Auth Register Api:
-````
-````
-localhost:8080/api/auth/register
-````
-````
-localhost:8080/api/auth/login
-````
-````
-localhost:8080/api/auth/deleteByUser
-````
-````
---------------> Product Api:
-````
-````
-localhost:8080/api/products/add
-````
-````
-localhost:8080/api/products/getAll
-````
-````
-localhost:8080/api/products/getByProductBrand
-````
-````
-localhost:8080/api/products/slice
-````
-````
-localhost:8080/api/products/deleteById
-````
-````
-localhost:8080/api/products/getDto
-````
-````
-localhost:8080/api/products/addToCart
-````
-````
-localhost:8080/api/products/getCart
-````
-````
-localhost:8080/api/products/removeFromCart
-````
-````
---------------> Category Api:
-````
-````
-localhost:8080/api/categorys/getAll
-````
-````
-localhost:8080/api/categorys/add
-````
-````
-localhost:8080/api/categorys/getByCategoryName
-````
-
 <p>
 For user actions, you need to set the mail configuration settings from the application.properties file. 
 </p>
