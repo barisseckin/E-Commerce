@@ -1,4 +1,4 @@
-package com.eCommerceProject.dataAccess.abstracts;
+package com.eCommerceProject.repository;
 
 import com.eCommerceProject.model.Cart;
 import org.springframework.data.jpa.repository.JpaRepository;

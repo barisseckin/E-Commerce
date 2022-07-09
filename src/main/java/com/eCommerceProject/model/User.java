@@ -7,6 +7,7 @@ import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 import java.util.Date;
+import java.util.List;
 
 
 @Data
@@ -33,6 +34,12 @@ public class User {
 
     @Column(name = "createDate")
     private Date userCreateDate;
+
+    @OneToMany
+    private List<SellerComment> sellerComment;
+
+    @OneToMany
+    private List<ProductComment> productComment;
 
     public User(String userName, String password, String eMail, Date userCreateDate) {
         this.userName = userName;

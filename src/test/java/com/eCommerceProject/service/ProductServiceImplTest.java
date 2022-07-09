@@ -1,6 +1,6 @@
 package com.eCommerceProject.service;
 
-import com.eCommerceProject.dataAccess.abstracts.ProductRepository;
+import com.eCommerceProject.repository.ProductRepository;
 import com.eCommerceProject.dto.createDto.ProductCreateDto;
 import com.eCommerceProject.dto.viewDto.ProductViewDto;
 import com.eCommerceProject.model.Product;

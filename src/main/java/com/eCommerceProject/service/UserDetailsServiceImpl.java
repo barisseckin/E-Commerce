@@ -1,6 +1,6 @@
 package com.eCommerceProject.service;
 
-import com.eCommerceProject.dataAccess.abstracts.UserRepository;
+import com.eCommerceProject.repository.UserRepository;
 import com.eCommerceProject.model.User;
 import com.eCommerceProject.security.JwtUserDetails;
 import lombok.RequiredArgsConstructor;

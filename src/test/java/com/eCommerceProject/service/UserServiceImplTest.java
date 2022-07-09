@@ -1,6 +1,6 @@
 package com.eCommerceProject.service;
 
-import com.eCommerceProject.dataAccess.abstracts.UserRepository;
+import com.eCommerceProject.repository.UserRepository;
 import com.eCommerceProject.model.User;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

@@ -5,6 +5,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import javax.validation.constraints.Min;
+import java.util.List;
 
 @Data
 @NoArgsConstructor
@@ -35,6 +36,12 @@ public class Product {
 
     @Column(name = "image")
     private String productImageUrl;
+
+    @ManyToOne
+    private Seller seller;
+
+    @OneToMany
+    private List<ProductComment> productComment;
 
     /*
     @ManyToOne                   //i need to edit the test section
