@@ -11,7 +11,10 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 @Service
@@ -94,4 +97,19 @@ public class ProductServiceImpl implements ProductService {
         cartRepository.deleteById(cart.getId());
     }
 
+
+    @Override
+    public Map<Integer, Object> searchByProduct(String productName) {
+        Map<Integer, Object> searchResult = new HashMap<>();
+        List<Product> products = new ArrayList<>();
+
+        for (Product product : productRepository.findAll()) {
+            if (product.getProductName().contains(productName)) {
+                products.add(product);
+                searchResult.put(products.size(), products);
+                return searchResult;
+            }
+        }
+        return null;
+    }
 }

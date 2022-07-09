@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/api/products/")
@@ -94,4 +95,9 @@ public class ProductController {
         return ResponseEntity.ok(ECommerceMessage.REMOVE_FROM_CART);
     }
 
+    @GetMapping("searchByProduct/{productName}")
+    public ResponseEntity<?> searchByProduct(@PathVariable String productName) {
+        Map<Integer, Object> result = productService.searchByProduct(productName);
+        return ResponseEntity.ok(result);
+    }
 }

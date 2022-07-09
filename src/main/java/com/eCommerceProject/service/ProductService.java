@@ -7,6 +7,7 @@ import com.eCommerceProject.model.Product;
 import org.springframework.data.domain.Pageable;
 
 import java.util.List;
+import java.util.Map;
 
 public interface ProductService {
     List<Product> getAll();
@@ -19,4 +20,5 @@ public interface ProductService {
     Cart addToCart(int id);
     List<Cart> getCart();
     void removeFromCart(int id);
+    Map<Integer, Object> searchByProduct(String productName);
 }
