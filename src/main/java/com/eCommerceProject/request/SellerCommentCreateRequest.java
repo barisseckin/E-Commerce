@@ -2,6 +2,7 @@ package com.eCommerceProject.request;
 
 import lombok.Data;
 
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import java.util.Date;
 
@@ -13,6 +14,7 @@ public class SellerCommentCreateRequest {
     private String body;
 
     @NotNull
+    @Min(value = 1)
     private int rating;
 
     private Date createDate;
