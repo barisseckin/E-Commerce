@@ -54,4 +54,6 @@ public interface ECommerceMessage {
 
     String PRODUCT_COMMENT_DELETED = "Product Comment Deleted.";
 
+    String ITEMS_IN_THE_CART_HAVE_BEEN_PURCHASED = "Items In The Cart Have Been Purchased...";
+
 }

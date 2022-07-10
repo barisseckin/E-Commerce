@@ -1,20 +1,22 @@
 package com.eCommerceProject.service;
 
 ;
+import com.eCommerceProject.model.ConfirmedOrder;
+import com.eCommerceProject.model.CreditCard;
 import com.eCommerceProject.repository.CartRepository;
+import com.eCommerceProject.repository.ConfirmedOrderRepository;
+import com.eCommerceProject.repository.CreditCardRepository;
 import com.eCommerceProject.repository.ProductRepository;
 import com.eCommerceProject.dto.createDto.ProductCreateDto;
 import com.eCommerceProject.dto.viewDto.ProductViewDto;
 import com.eCommerceProject.model.Cart;
 import com.eCommerceProject.model.Product;
+import com.eCommerceProject.request.ConfirmCartRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Service
@@ -24,6 +26,10 @@ public class ProductServiceImpl implements ProductService {
     private final ProductRepository productRepository;
 
     private final CartRepository cartRepository;
+
+    private final CreditCardRepository creditCardRepository;
+
+    private final ConfirmedOrderRepository confirmedOrderRepository;
 
     @Override
     public List<Product> getAll() {
@@ -74,6 +80,7 @@ public class ProductServiceImpl implements ProductService {
         cart.setProductDetails(product.getProductDetails());
         cart.setProductPrice(product.getProductPrice());
         cart.setProductImageUrl(product.getProductImageUrl());
+        cart.setSeller(product.getSeller());
 
         cart.setQuantity(cart.getQuantity() + 1);
         product.setStock(product.getStock() - 1);
@@ -95,6 +102,50 @@ public class ProductServiceImpl implements ProductService {
     public void removeFromCart(int id) {
         Cart cart = cartRepository.getById(id);
         cartRepository.deleteById(cart.getId());
+    }
+
+    @Override
+    public ConfirmedOrder confirmCart(ConfirmCartRequest confirmCartRequest) {
+        Optional<Cart> cart = cartRepository.findById(confirmCartRequest.getId());
+
+        if (cart.isPresent()) {
+            creditCardRepository.save(new CreditCard(confirmCartRequest.getCardNumber(), confirmCartRequest.getCvv(),
+                    confirmCartRequest.getNameAndSurname(), confirmCartRequest.getExpirationDate()));
+
+            ConfirmedOrder confirmedOrder = new ConfirmedOrder();
+            confirmedOrder.setProductBrand(cart.get().getProductBrand());
+            confirmedOrder.setProductDetails(cart.get().getProductDetails());
+            confirmedOrder.setProductName(cart.get().getProductName());
+            confirmedOrder.setProductPrice(cart.get().getProductPrice());
+            confirmedOrder.setProductImageUrl(cart.get().getProductImageUrl());
+            confirmedOrder.setSeller(cart.get().getSeller());
+
+            confirmedOrderRepository.save(confirmedOrder);
+
+            cartRepository.deleteById(cart.get().getId());
+
+            return confirmedOrder;
+        }
+
+        return null;
+    }
+
+    @Override
+    public List<ConfirmedOrder> getAllConfirmedOrder() {
+        List<ConfirmedOrder> confirmedOrders = confirmedOrderRepository.findAll();
+        return confirmedOrders;
+    }
+
+    @Override
+    public ConfirmedOrder getConfirmedOrderById(int id) {
+        Optional<ConfirmedOrder> confirmedOrder = confirmedOrderRepository.findById(id);
+        return confirmedOrder.orElse(null);
+    }
+
+    @Override
+    public ConfirmedOrder getConfirmedOrderByOrderNumber(Long orderNumber) {
+        ConfirmedOrder confirmedOrder = confirmedOrderRepository.findConfirmedOrderByOrderNumber(orderNumber);
+        return confirmedOrder;
     }
 
 

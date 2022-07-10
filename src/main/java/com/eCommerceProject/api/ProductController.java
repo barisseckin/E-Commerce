@@ -1,5 +1,7 @@
 package com.eCommerceProject.api;
 
+import com.eCommerceProject.model.CreditCard;
+import com.eCommerceProject.request.ConfirmCartRequest;
 import com.eCommerceProject.service.ProductService;
 import com.eCommerceProject.dto.createDto.ProductCreateDto;
 import com.eCommerceProject.dto.viewDto.ProductViewDto;
@@ -8,6 +10,7 @@ import com.eCommerceProject.shared.ECommerceMessage;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.parameters.P;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -100,4 +103,26 @@ public class ProductController {
         Map<Integer, Object> result = productService.searchByProduct(productName);
         return ResponseEntity.ok(result);
     }
+
+    @PostMapping("confirmCart")
+    public ResponseEntity<?> confirmCart(@RequestBody ConfirmCartRequest confirmCartRequest) {
+        productService.confirmCart(confirmCartRequest);
+        return ResponseEntity.ok(ECommerceMessage.ITEMS_IN_THE_CART_HAVE_BEEN_PURCHASED);
+    }
+
+    @GetMapping("getAllConfirmedCart")
+    public ResponseEntity<?> getAllConfirmedOrder() {
+        return ResponseEntity.ok(productService.getAllConfirmedOrder());
+    }
+
+    @GetMapping("getConfirmedOrderById/{id}")
+    public ResponseEntity<?> getConfirmedOrderById(@PathVariable int id) {
+        return ResponseEntity.ok(productService.getConfirmedOrderById(id));
+    }
+
+    @GetMapping("getConfirmedOrderByOrderNumber/{orderNumber}")
+    public ResponseEntity<?> getConfirmedOrderByOrderNumber(@PathVariable Long orderNumber) {
+        return ResponseEntity.ok(productService.getConfirmedOrderByOrderNumber(orderNumber));
+    }
+
 }

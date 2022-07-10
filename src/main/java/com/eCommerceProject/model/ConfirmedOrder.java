@@ -1,21 +1,23 @@
 package com.eCommerceProject.model;
 
-import lombok.*;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
 @Data
 @NoArgsConstructor
-@AllArgsConstructor
 @Entity
-@Table(name= "CART")
-public class Cart {
+@Table(name = "CONFIRMED_ORDER")
+public class ConfirmedOrder {
 
     @Id
-    private Integer id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
 
-    @Column(name = "quantity")
-    private int quantity;
+    @Column(name = "orderNumber")
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long orderNumber;
 
     @Column(name = "productName")
     private String productName;
@@ -35,4 +37,6 @@ public class Cart {
     @ManyToOne
     private Seller seller;
 
+    @ManyToOne
+    private User user;
 }
