@@ -33,7 +33,8 @@ public class UpdateProductPriceServiceImpl implements UpdateProductPriceService{
 
             for (User user : users) {
                 if (user.isNotificationPermission()) {
-                    emailService.sendEmails(user.getEMail(), "Big Discount", product.get().getProductName() + " Big discount on product!");
+                    emailService.sendEmails(user.getEMail(), "Big Discount", product.get().getProductBrand() +" "+ product.get().getProductName()
+                            + " Big discount on product!");
                 }
             }
         }
