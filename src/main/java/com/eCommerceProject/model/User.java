@@ -42,6 +42,9 @@ public class User {
     @OneToMany
     private List<ProductComment> productComment;
 
+    @ManyToOne
+    private CreditCard creditCard;
+
     public User(String userName, String password, String eMail, Date userCreateDate) {
         this.userName = userName;
         this.password = password;
