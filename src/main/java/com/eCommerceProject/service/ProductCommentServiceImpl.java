@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -31,6 +32,12 @@ public class ProductCommentServiceImpl implements ProductCommentService{
     @Override
     public void deleteById(int id) {
         productCommentRepository.deleteById(id);
+    }
+
+    @Override
+    public ProductComment getById(int id) {
+        Optional<ProductComment> productComment = productCommentRepository.findById(id);
+        return productComment.orElse(null);
     }
 
     @Override

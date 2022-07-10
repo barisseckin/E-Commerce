@@ -42,4 +42,16 @@ public interface ECommerceMessage {
 
     String CATEGORY_NAME_ALREADY_IN_USE = "Category Name Already In Use!";
 
+    String SELLER_SAVED = "Seller Saved...";
+
+    String SELLER_DELETED = "Seller Deleted.";
+
+    String SELLER_COMMENT_CREATED = "Seller Comment Created...";
+
+    String SELLER_COMMENT_DELETED = "Seller Comment Deleted.";
+
+    String PRODUCT_COMMENT_CREATED = "Product Comment Created...";
+
+    String PRODUCT_COMMENT_DELETED = "Product Comment Deleted.";
+
 }

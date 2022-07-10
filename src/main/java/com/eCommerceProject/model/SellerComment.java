@@ -29,4 +29,5 @@ public class SellerComment {
 
     @ManyToOne
     private Seller seller;
+
 }

@@ -1,4 +1,4 @@
-package com.eCommerceProject.api.controller;
+package com.eCommerceProject.api;
 
 import com.eCommerceProject.service.CategoryService;
 import com.eCommerceProject.model.Category;

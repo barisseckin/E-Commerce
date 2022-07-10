@@ -1,4 +1,4 @@
-package com.eCommerceProject.api.controller;
+package com.eCommerceProject.api;
 
 import com.eCommerceProject.service.UserService;
 import com.eCommerceProject.dto.viewDto.UserViewDto;
