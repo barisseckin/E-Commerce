@@ -56,4 +56,8 @@ public interface ECommerceMessage {
 
     String ITEMS_IN_THE_CART_HAVE_BEEN_PURCHASED = "Items In The Cart Have Been Purchased...";
 
+    String ADDRESS_CREATED = "Address Created";
+
+    String ADDRESS_DELETED = "Address deleted";
+
 }

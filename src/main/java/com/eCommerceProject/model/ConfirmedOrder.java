@@ -34,6 +34,9 @@ public class ConfirmedOrder {
     @Column(name = "productImageUrl")
     private String productImageUrl;
 
+    @OneToOne
+    private Address address;
+
     @ManyToOne
     private Seller seller;
 

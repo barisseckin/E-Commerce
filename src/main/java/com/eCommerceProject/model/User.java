@@ -45,6 +45,9 @@ public class User {
     @ManyToOne
     private CreditCard creditCard;
 
+    @OneToMany
+    private List<Address> address;
+
     public User(String userName, String password, String eMail, Date userCreateDate) {
         this.userName = userName;
         this.password = password;
