@@ -7,6 +7,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Date;
+
 @RestController
 @RequestMapping("/api/products/comments/")
 @CrossOrigin
@@ -17,7 +19,7 @@ public class ProductCommentController {
 
     @PostMapping("add")
     public ResponseEntity<?> add(@RequestBody ProductComment productComment) {
-        productCommentService.add(productComment);
+        productCommentService.add(new ProductComment(productComment.getTitle(), productComment.getBody(), productComment.getRating(), new Date()));
         return ResponseEntity.ok(ECommerceMessage.PRODUCT_COMMENT_CREATED);
     }
 

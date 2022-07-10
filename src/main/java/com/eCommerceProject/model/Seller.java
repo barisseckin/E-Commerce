@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.Date;
 import java.util.List;
 
 @Data
@@ -23,7 +24,16 @@ public class Seller {
     @Column(name = "profilePictureUrl")
     private String profilePictureUrl;
 
+    @Column(name = "create_date")
+    private Date createDate;
+
     @OneToMany
     private List<SellerComment> sellerComment;
+
+    public Seller(String name, String profilePictureUrl, Date createDate) {
+        this.name = name;
+        this.profilePictureUrl = profilePictureUrl;
+        this.createDate = createDate;
+    }
 
 }

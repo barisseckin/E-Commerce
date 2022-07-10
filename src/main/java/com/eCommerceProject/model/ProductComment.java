@@ -4,6 +4,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Data
 @NoArgsConstructor
@@ -24,9 +25,19 @@ public class ProductComment {
     @Column(name = "rating")
     private int rating;
 
+    @Column(name = "create_date")
+    private Date createDate;
+
     @ManyToOne
     private User user;
 
     @ManyToOne
     private Product product;
+
+    public ProductComment(String title, String body, int rating, Date createDate) {
+        this.title = title;
+        this.body = body;
+        this.rating = rating;
+        this.createDate = createDate;
+    }
 }
