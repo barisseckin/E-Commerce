@@ -24,15 +24,19 @@ public class Seller {
     @Column(name = "profilePictureUrl")
     private String profilePictureUrl;
 
+    @Column(name = "eMail")
+    private String eMail;
+
     @Column(name = "create_date")
     private Date createDate;
 
     @OneToMany
     private List<SellerComment> sellerComment;
 
-    public Seller(String name, String profilePictureUrl, Date createDate) {
+    public Seller(String name, String profilePictureUrl, String eMail, Date createDate) {
         this.name = name;
         this.profilePictureUrl = profilePictureUrl;
+        this.eMail = eMail;
         this.createDate = createDate;
     }
 

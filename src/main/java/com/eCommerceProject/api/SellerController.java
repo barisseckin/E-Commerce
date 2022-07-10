@@ -8,6 +8,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.Date;
 
 @RestController
@@ -24,8 +25,8 @@ public class SellerController {
     }
 
     @PostMapping("add")
-    public ResponseEntity<?> add(@RequestBody Seller seller) {
-        sellerService.add(new Seller(seller.getName(), seller.getProfilePictureUrl(), new Date()));
+    public ResponseEntity<?> add(@Valid @RequestBody SellerCreateRequest seller) {
+        sellerService.add(new Seller(seller.getName(), seller.getProfilePictureUrl(), seller.getEMail(), new Date()));
         return ResponseEntity.ok(ECommerceMessage.SELLER_SAVED);
     }
 
