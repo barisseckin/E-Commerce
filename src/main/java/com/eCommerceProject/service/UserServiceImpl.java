@@ -20,7 +20,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public User add(User userCreateDto) {
          this.userRepository.save(new User(userCreateDto.getUserName(),
-                userCreateDto.getPassword(), userCreateDto.getEMail(), userCreateDto.getUserCreateDate()));
+                userCreateDto.getPassword(), userCreateDto.getEMail(), userCreateDto.getUserCreateDate(), userCreateDto.isNotificationPermission()));
         return userCreateDto;
     }
 

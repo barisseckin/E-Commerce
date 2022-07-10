@@ -36,6 +36,9 @@ public class User {
     @Column(name = "createDate")
     private Date userCreateDate;
 
+    @Column(name = "notificationPermission")
+    private boolean notificationPermission = true;
+
     @OneToMany
     private List<SellerComment> sellerComment;
 
@@ -48,11 +51,12 @@ public class User {
     @OneToMany
     private List<Address> address;
 
-    public User(String userName, String password, String eMail, Date userCreateDate) {
+    public User(String userName, String password, String eMail, Date userCreateDate, boolean notificationPermission) {
         this.userName = userName;
         this.password = password;
         this.eMail = eMail;
         this.userCreateDate = userCreateDate;
+        this.notificationPermission = notificationPermission;
     }
 
 }

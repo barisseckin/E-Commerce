@@ -1,11 +1,14 @@
 package com.eCommerceProject.api;
 
 import com.eCommerceProject.model.CreditCard;
+import com.eCommerceProject.request.CampaignCreateRequest;
 import com.eCommerceProject.request.ConfirmCartRequest;
+import com.eCommerceProject.request.PriceIncreaseRequest;
 import com.eCommerceProject.service.ProductService;
 import com.eCommerceProject.dto.createDto.ProductCreateDto;
 import com.eCommerceProject.dto.viewDto.ProductViewDto;
 import com.eCommerceProject.model.Product;
+import com.eCommerceProject.service.UpdateProductPriceService;
 import com.eCommerceProject.shared.ECommerceMessage;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Pageable;
@@ -24,6 +27,8 @@ import java.util.Map;
 public class ProductController {
 
     private final ProductService productService;
+
+    private final UpdateProductPriceService updateProductPriceService;
 
     @PostMapping("add")
     public ResponseEntity<?> add(@RequestBody @Valid ProductCreateDto productCreateDto) {
@@ -123,6 +128,18 @@ public class ProductController {
     @GetMapping("getConfirmedOrderByOrderNumber/{orderNumber}")
     public ResponseEntity<?> getConfirmedOrderByOrderNumber(@PathVariable Long orderNumber) {
         return ResponseEntity.ok(productService.getConfirmedOrderByOrderNumber(orderNumber));
+    }
+
+    @PutMapping("createCampaign")
+    public ResponseEntity<?> createCampaign(@RequestBody CampaignCreateRequest campaignCreateRequest) {
+        updateProductPriceService.createCampaign(campaignCreateRequest);
+        return ResponseEntity.ok("success");
+    }
+
+    @PutMapping("priceIncrease")
+    public ResponseEntity<?> priceIncrease(@RequestBody PriceIncreaseRequest priceIncreaseRequest) {
+        updateProductPriceService.priceIncrease(priceIncreaseRequest);
+        return ResponseEntity.ok("success");
     }
 
 }
