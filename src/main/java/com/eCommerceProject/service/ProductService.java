@@ -19,6 +19,7 @@ public interface ProductService {
     List<Product> getByproductName(String productName);
     List<Product> getByproductBrand(String productBrand);
     void deleteById(int id);
+    void updateByProductDetails(int productId, String productDetails);
     List<Product> slice(Pageable pageable);
     List<ProductViewDto> getDto();
     Cart addToCart(int id);

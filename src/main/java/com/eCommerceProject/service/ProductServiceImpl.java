@@ -55,6 +55,14 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
+    public void updateByProductDetails(int productId, String productDetails) {
+        Optional<Product> product = productRepository.findById(productId);
+
+        product.ifPresent(value -> value.setProductDetails(productDetails));
+        productRepository.save(product.get());
+    }
+
+    @Override
     public List<Product> slice(Pageable pageable) {
         final List<Product> products = this.productRepository.findAll(pageable).stream().collect(Collectors.toList());
         return products;
@@ -106,7 +114,6 @@ public class ProductServiceImpl implements ProductService {
         Optional<Cart> cart = cartRepository.findById(confirmCartRequest.getId());
 
         if (cart.isPresent()) {
-
             Optional<PromoCode> code = promoCodeRepository.findPromoCodeByCode(confirmCartRequest.getPromoCode());
 
             ConfirmedOrder confirmedOrder = new ConfirmedOrder();

@@ -4,6 +4,7 @@ import com.eCommerceProject.model.CreditCard;
 import com.eCommerceProject.request.CampaignCreateRequest;
 import com.eCommerceProject.request.ConfirmCartRequest;
 import com.eCommerceProject.request.PriceIncreaseRequest;
+import com.eCommerceProject.request.ProductDetailsUpdateRequest;
 import com.eCommerceProject.service.ProductService;
 import com.eCommerceProject.dto.createDto.ProductCreateDto;
 import com.eCommerceProject.dto.viewDto.ProductViewDto;
@@ -139,6 +140,12 @@ public class ProductController {
     @PutMapping("priceIncrease")
     public ResponseEntity<?> priceIncrease(@RequestBody PriceIncreaseRequest priceIncreaseRequest) {
         updateProductPriceService.priceIncrease(priceIncreaseRequest);
+        return ResponseEntity.ok("success");
+    }
+
+    @PutMapping("update-product-details")
+    public ResponseEntity<?> updateByProductDetails(@RequestBody ProductDetailsUpdateRequest updateRequest) {
+        productService.updateByProductDetails(updateRequest.getProductId(), updateRequest.getProductDetails());
         return ResponseEntity.ok("success");
     }
 
