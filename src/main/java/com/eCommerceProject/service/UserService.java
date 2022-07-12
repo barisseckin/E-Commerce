@@ -17,4 +17,6 @@ public interface UserService {
     User getByUserName(String userName);
     void authDeleteByUser(UserDeleteRequest userDeleteRequest);
     User findByEMail(String eMail);
+    void updateByUserName(int userId, String userName);
+    void updateByNotificationPermission(int userId, boolean permission);
 }

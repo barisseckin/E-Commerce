@@ -1,5 +1,7 @@
 package com.eCommerceProject.api;
 
+import com.eCommerceProject.request.UserNameUpdateRequest;
+import com.eCommerceProject.request.UserUpdateNotificationPermissionRequest;
 import com.eCommerceProject.service.UserService;
 import com.eCommerceProject.dto.viewDto.UserViewDto;
 import com.eCommerceProject.model.User;
@@ -7,6 +9,7 @@ import com.eCommerceProject.shared.GenericResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.parameters.P;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -53,5 +56,17 @@ public class UserController {
     public ResponseEntity<List<UserViewDto>> getDto() {
         List<UserViewDto> users = this.userService.getUserViewDto();
         return ResponseEntity.ok(users);
+    }
+
+    @PutMapping("updateByUsername")
+    public ResponseEntity<?> updateByUserName(@RequestBody UserNameUpdateRequest userNameUpdateRequest) {
+        userService.updateByUserName(userNameUpdateRequest.getUserId(), userNameUpdateRequest.getUserName());
+        return ResponseEntity.ok("success");
+    }
+
+    @PutMapping("updateUserNotificationPermission")
+    public ResponseEntity<?> updateByNotificationPermission(UserUpdateNotificationPermissionRequest request) {
+        userService.updateByNotificationPermission(request.getUserId(), request.isPermission());
+        return ResponseEntity.ok("success");
     }
 }

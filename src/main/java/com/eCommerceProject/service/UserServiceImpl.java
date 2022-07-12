@@ -9,6 +9,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -67,5 +68,26 @@ public class UserServiceImpl implements UserService {
     @Override
     public User findByEMail(String eMail) {
         return userRepository.findByEMail(eMail);
+    }
+
+    @Override
+    public void updateByUserName(int userId, String userName) {
+        Optional<User> user = userRepository.findById(userId);
+
+        if (user.isPresent()) {
+            user.get().setUserName(userName);
+            userRepository.save(user.get());
+        }
+    }
+
+    @Override
+    public void updateByNotificationPermission(int userId, boolean permission) {
+        Optional<User> user = userRepository.findById(userId);
+
+        if (user.isPresent()) {
+            user.get().setNotificationPermission(permission);
+            userRepository.save(user.get());
+        }
+
     }
 }

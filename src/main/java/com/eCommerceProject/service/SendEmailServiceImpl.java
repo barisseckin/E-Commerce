@@ -1,15 +1,18 @@
 package com.eCommerceProject.service;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import com.eCommerceProject.repository.UserRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 
 @Service
+@RequiredArgsConstructor
 public class SendEmailServiceImpl implements SendEmailService{
 
-    @Autowired
-    private JavaMailSender javaMailSender;
+    private final JavaMailSender javaMailSender;
+
+    private final UserRepository userRepository;
 
     @Override
     public void sendEmails(String to, String body, String topic) {
@@ -21,4 +24,19 @@ public class SendEmailServiceImpl implements SendEmailService{
         javaMailSender.send(simpleMailMessage);
     }
 
+    @Override
+    public void sendEmailAllUser(String body, String topic) {
+        SimpleMailMessage simpleMailMessage = new SimpleMailMessage();
+
+        userRepository.findAll().forEach(user -> {
+
+            if (user.isNotificationPermission()) {
+                simpleMailMessage.setTo("tiklakapinda");
+                simpleMailMessage.setTo(user.getEMail());
+                simpleMailMessage.setSubject(topic);
+                simpleMailMessage.setText(body);
+                javaMailSender.send(simpleMailMessage);
+            }
+        });
+    }
 }

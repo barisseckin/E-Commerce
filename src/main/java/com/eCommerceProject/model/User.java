@@ -51,6 +51,9 @@ public class User {
     @OneToMany
     private List<Address> address;
 
+    @OneToMany
+    private List<PromoCode> promoCode;
+
     public User(String userName, String password, String eMail, Date userCreateDate, boolean notificationPermission) {
         this.userName = userName;
         this.password = password;
