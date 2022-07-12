@@ -107,28 +107,27 @@ public class ProductServiceImpl implements ProductService {
 
         if (cart.isPresent()) {
 
-            if (confirmCartRequest.getPromoCode().isPresent()) {
-                PromoCode code = promoCodeRepository.findPromoCodeByCode(confirmCartRequest.getPromoCode().get());
-                if (!code.getCode().isEmpty()) {
+            Optional<PromoCode> code = promoCodeRepository.findPromoCodeByCode(confirmCartRequest.getPromoCode());
 
-                    creditCardRepository.save(new CreditCard(confirmCartRequest.getCardNumber(), confirmCartRequest.getCvv(),
-                            confirmCartRequest.getNameAndSurname(), confirmCartRequest.getExpirationDate()));
+            ConfirmedOrder confirmedOrder = new ConfirmedOrder();
+            confirmedOrder.setProductBrand(cart.get().getProductBrand());
+            confirmedOrder.setProductDetails(cart.get().getProductDetails());
+            confirmedOrder.setProductName(cart.get().getProductName());
+            confirmedOrder.setProductImageUrl(cart.get().getProductImageUrl());
+            confirmedOrder.setSeller(cart.get().getSeller());
 
-                    ConfirmedOrder confirmedOrder = new ConfirmedOrder();
-                    confirmedOrder.setProductBrand(cart.get().getProductBrand());
-                    confirmedOrder.setProductDetails(cart.get().getProductDetails());
-                    confirmedOrder.setProductName(cart.get().getProductName());
-                    confirmedOrder.setProductPrice(cart.get().getProductPrice() - code.getAmount());
-                    confirmedOrder.setProductImageUrl(cart.get().getProductImageUrl());
-                    confirmedOrder.setSeller(cart.get().getSeller());
+            if (code.isPresent()) {
+                confirmedOrder.setProductPrice(cart.get().getProductPrice() - code.get().getAmount());
+            } else {
+                confirmedOrder.setProductPrice(cart.get().getProductPrice());
+            }
 
-                    confirmedOrderRepository.save(confirmedOrder);
+            creditCardRepository.save(new CreditCard(confirmCartRequest.getCardNumber(), confirmCartRequest.getCvv(),
+                    confirmCartRequest.getNameAndSurname(), confirmCartRequest.getExpirationDate()));
+            confirmedOrderRepository.save(confirmedOrder);
+            cartRepository.deleteById(cart.get().getId());
 
-                    cartRepository.deleteById(cart.get().getId());
-
-                    return confirmedOrder;
-                    }
-                }
+            return confirmedOrder;
             }
         return null;
     }

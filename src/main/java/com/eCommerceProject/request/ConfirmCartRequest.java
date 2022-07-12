@@ -2,8 +2,6 @@ package com.eCommerceProject.request;
 
 import lombok.Data;
 
-import java.util.Optional;
-
 @Data
 public class ConfirmCartRequest {
 
@@ -17,5 +15,5 @@ public class ConfirmCartRequest {
 
     private String nameAndSurname;
 
-    private Optional<String> promoCode;
+    private String promoCode;
 }
