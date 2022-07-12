@@ -2,10 +2,7 @@ package com.eCommerceProject.service;
 
 ;
 import com.eCommerceProject.model.*;
-import com.eCommerceProject.repository.CartRepository;
-import com.eCommerceProject.repository.ConfirmedOrderRepository;
-import com.eCommerceProject.repository.CreditCardRepository;
-import com.eCommerceProject.repository.ProductRepository;
+import com.eCommerceProject.repository.*;
 import com.eCommerceProject.dto.createDto.ProductCreateDto;
 import com.eCommerceProject.dto.viewDto.ProductViewDto;
 import com.eCommerceProject.request.ConfirmCartRequest;
@@ -27,6 +24,8 @@ public class ProductServiceImpl implements ProductService {
     private final CreditCardRepository creditCardRepository;
 
     private final ConfirmedOrderRepository confirmedOrderRepository;
+
+    private final PromoCodeRepository promoCodeRepository;
 
     @Override
     public List<Product> getAll() {
@@ -107,24 +106,30 @@ public class ProductServiceImpl implements ProductService {
         Optional<Cart> cart = cartRepository.findById(confirmCartRequest.getId());
 
         if (cart.isPresent()) {
-            creditCardRepository.save(new CreditCard(confirmCartRequest.getCardNumber(), confirmCartRequest.getCvv(),
-                    confirmCartRequest.getNameAndSurname(), confirmCartRequest.getExpirationDate()));
 
-            ConfirmedOrder confirmedOrder = new ConfirmedOrder();
-            confirmedOrder.setProductBrand(cart.get().getProductBrand());
-            confirmedOrder.setProductDetails(cart.get().getProductDetails());
-            confirmedOrder.setProductName(cart.get().getProductName());
-            confirmedOrder.setProductPrice(cart.get().getProductPrice());
-            confirmedOrder.setProductImageUrl(cart.get().getProductImageUrl());
-            confirmedOrder.setSeller(cart.get().getSeller());
+            if (confirmCartRequest.getPromoCode().isPresent()) {
+                PromoCode code = promoCodeRepository.findPromoCodeByCode(confirmCartRequest.getPromoCode().get());
+                if (!code.getCode().isEmpty()) {
 
-            confirmedOrderRepository.save(confirmedOrder);
+                    creditCardRepository.save(new CreditCard(confirmCartRequest.getCardNumber(), confirmCartRequest.getCvv(),
+                            confirmCartRequest.getNameAndSurname(), confirmCartRequest.getExpirationDate()));
 
-            cartRepository.deleteById(cart.get().getId());
+                    ConfirmedOrder confirmedOrder = new ConfirmedOrder();
+                    confirmedOrder.setProductBrand(cart.get().getProductBrand());
+                    confirmedOrder.setProductDetails(cart.get().getProductDetails());
+                    confirmedOrder.setProductName(cart.get().getProductName());
+                    confirmedOrder.setProductPrice(cart.get().getProductPrice() - code.getAmount());
+                    confirmedOrder.setProductImageUrl(cart.get().getProductImageUrl());
+                    confirmedOrder.setSeller(cart.get().getSeller());
 
-            return confirmedOrder;
-        }
+                    confirmedOrderRepository.save(confirmedOrder);
 
+                    cartRepository.deleteById(cart.get().getId());
+
+                    return confirmedOrder;
+                    }
+                }
+            }
         return null;
     }
 
