@@ -125,6 +125,7 @@ public class ProductServiceImpl implements ProductService {
 
             if (code.isPresent()) {
                 confirmedOrder.setProductPrice(cart.get().getProductPrice() - code.get().getAmount());
+                promoCodeRepository.deleteById(code.get().getId());
             } else {
                 confirmedOrder.setProductPrice(cart.get().getProductPrice());
             }
