@@ -1,6 +1,5 @@
 package com.eCommerceProject.api;
 
-import com.eCommerceProject.model.CreditCard;
 import com.eCommerceProject.request.CampaignCreateRequest;
 import com.eCommerceProject.request.ConfirmCartRequest;
 import com.eCommerceProject.request.PriceIncreaseRequest;
@@ -14,7 +13,6 @@ import com.eCommerceProject.shared.ECommerceMessage;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.parameters.P;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -35,6 +33,11 @@ public class ProductController {
     public ResponseEntity<?> add(@RequestBody @Valid ProductCreateDto productCreateDto) {
         this.productService.add(productCreateDto);
         return ResponseEntity.ok(ECommerceMessage.PRODUCT_SAVED);
+    }
+
+    @GetMapping("getById/{id}")
+    public ResponseEntity<?> getById(@PathVariable int id) {
+        return ResponseEntity.ok(productService.getById(id));
     }
 
     @GetMapping("getAll")

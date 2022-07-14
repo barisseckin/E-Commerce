@@ -1,6 +1,5 @@
 package com.eCommerceProject.service;
 
-;
 import com.eCommerceProject.exception.NotFoundException;
 import com.eCommerceProject.model.*;
 import com.eCommerceProject.repository.*;
@@ -31,6 +30,12 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public List<Product> getAll() {
         return this.productRepository.findAll();
+    }
+
+    @Override
+    public Product getById(int id) {
+        Product product = productRepository.findById(id).orElseThrow(() -> new NotFoundException("product couldn't be found by following id: " + id));
+        return product;
     }
 
     @Override

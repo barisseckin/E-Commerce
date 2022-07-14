@@ -15,6 +15,7 @@ import java.util.Optional;
 
 public interface ProductService {
     List<Product> getAll();
+    Product getById(int id);
     ProductCreateDto add(ProductCreateDto productCreateDto);
     List<Product> getByproductName(String productName);
     List<Product> getByproductBrand(String productBrand);
