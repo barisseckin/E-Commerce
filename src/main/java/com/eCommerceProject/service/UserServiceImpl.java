@@ -1,6 +1,6 @@
 package com.eCommerceProject.service;
 
-import com.eCommerceProject.exception.UserNotFoundException;
+import com.eCommerceProject.exception.NotFoundException;
 import com.eCommerceProject.repository.UserRepository;
 import com.eCommerceProject.dto.viewDto.UserViewDto;
 import com.eCommerceProject.model.User;
@@ -34,7 +34,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User getByid(int id) {
-        final User user = userRepository.findById(id).orElseThrow(() -> new UserNotFoundException("user couldn't be found by following id: " + id));
+        final User user = userRepository.findById(id).orElseThrow(() -> new NotFoundException("user couldn't be found by following id: " + id));
         return user;
     }
 

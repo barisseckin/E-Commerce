@@ -21,11 +21,8 @@ public class GeneralExceptionHandler extends ResponseEntityExceptionHandler {
         return super.handleMethodArgumentNotValid(ex, headers, status, request);
     }
 
-    @ExceptionHandler(UserNotFoundException.class)
-    public ResponseEntity<?> userNotFoundException(UserNotFoundException exception) {
+    @ExceptionHandler(NotFoundException.class)
+    public ResponseEntity<?> userNotFoundException(NotFoundException exception) {
         return new ResponseEntity<>(exception.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
     }
-
-
-
 }

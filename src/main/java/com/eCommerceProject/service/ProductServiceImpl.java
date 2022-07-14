@@ -1,6 +1,7 @@
 package com.eCommerceProject.service;
 
 ;
+import com.eCommerceProject.exception.NotFoundException;
 import com.eCommerceProject.model.*;
 import com.eCommerceProject.repository.*;
 import com.eCommerceProject.dto.createDto.ProductCreateDto;
@@ -148,8 +149,8 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public ConfirmedOrder getConfirmedOrderById(int id) {
-        Optional<ConfirmedOrder> confirmedOrder = confirmedOrderRepository.findById(id);
-        return confirmedOrder.orElse(null);
+        ConfirmedOrder confirmedOrder = confirmedOrderRepository.findById(id).orElseThrow(() -> new NotFoundException("confirmed order couldn't be found by following id: " + id));
+        return confirmedOrder;
     }
 
     @Override
