@@ -19,4 +19,20 @@ public class PromoCodeController {
         promoCodeService.createPromoCode(promoCodeRequest);
         return ResponseEntity.ok("success");
     }
+
+    @DeleteMapping("delete-code")
+    public ResponseEntity<?> deleteById(@RequestBody Long id) {
+        promoCodeService.deleteById(id);
+        return ResponseEntity.ok("success");
+    }
+
+    @GetMapping("getAll")
+    public ResponseEntity<?> getAll() {
+        return ResponseEntity.ok(promoCodeService.getAll());
+    }
+
+    @GetMapping("getBydId/{id}")
+    public ResponseEntity<?> getById(@PathVariable("id") Long id) {
+        return ResponseEntity.ok(promoCodeService.getById(id));
+    }
 }
