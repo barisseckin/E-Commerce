@@ -20,7 +20,7 @@ public class PromoCode {
     private String code;
 
     @Column(name = "amount")
-    private double amount;
+    private int amount;
 
     @Column(name = "createDate")
     private Date createDate;

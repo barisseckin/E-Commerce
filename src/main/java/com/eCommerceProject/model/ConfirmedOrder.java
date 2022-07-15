@@ -16,8 +16,8 @@ public class ConfirmedOrder {
     private int id;
 
     @Column(name = "orderNumber")
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long orderNumber;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int orderNumber;
 
     @Column(name = "productName")
     private String productName;

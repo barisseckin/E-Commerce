@@ -7,7 +7,7 @@ public class PromoCodeCreateRequest {
 
     private int userId;
 
-    private double amount;
+    private int amount;
 
     private int year;
 
