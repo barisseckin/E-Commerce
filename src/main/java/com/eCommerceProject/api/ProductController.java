@@ -152,4 +152,20 @@ public class ProductController {
         return ResponseEntity.ok("success");
     }
 
+    @PutMapping("addFavorite/{productId}")
+    public ResponseEntity<?> addFavorite(@PathVariable("productId") int productId) {
+        productService.addFavorite(productId);
+        return ResponseEntity.ok(ECommerceMessage.ADDED_TO_FAVORITES);
+    }
+
+    @GetMapping("getNumberOfFavorite/{productId}")
+    public ResponseEntity<?> getNumberOfFavorite(@PathVariable("productId") int productId) {
+        return ResponseEntity.ok(productService.getNumberOfFavorite(productId));
+    }
+
+    @PutMapping("removeFromFavorite/{productId}")
+    public ResponseEntity<?> removeFromFavorite(@PathVariable("productId") int productId) {
+        productService.removeFromFavorites(productId);
+        return ResponseEntity.ok(ECommerceMessage.REMOVE_FROM_FAVORITES);
+    }
 }

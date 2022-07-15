@@ -31,4 +31,7 @@ public interface ProductService {
     ConfirmedOrder getConfirmedOrderById(int id);
     ConfirmedOrder getConfirmedOrderByOrderNumber(Long orderNumber);
     Map<Integer, Object> searchByProduct(String productName);
+    void addFavorite(int productId);
+    int getNumberOfFavorite(int productId);
+    void removeFromFavorites(int productId);
 }

@@ -179,4 +179,34 @@ public class ProductServiceImpl implements ProductService {
         }
         return null;
     }
+
+    @Override
+    public void addFavorite(int productId) {
+        Optional<Product> product = productRepository.findById(productId);
+
+        if (product.isPresent()) {
+            product.get().setFavoriteNumber(product.get().getFavoriteNumber() + 1);
+            productRepository.save(product.get());
+        } else {
+            throw new NotFoundException("product couldn't be found by following id: " + productId);
+        }
+
+    }
+
+    @Override
+    public int getNumberOfFavorite(int productId) {
+        return productRepository.findById(productId).get().getFavoriteNumber();
+    }
+
+    @Override
+    public void removeFromFavorites(int productId) {
+        Optional<Product> product = productRepository.findById(productId);
+
+        if (product.isPresent()) {
+            product.get().setFavoriteNumber(product.get().getFavoriteNumber() - 1);
+            productRepository.save(product.get());
+        } else {
+            throw new NotFoundException("product couldn't be found by following id: " + productId);
+        }
+    }
 }

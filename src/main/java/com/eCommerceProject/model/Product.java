@@ -37,6 +37,10 @@ public class Product {
     @Column(name = "image")
     private String productImageUrl;
 
+    @Column(name = "favoriteNumber")
+    @Min(value = 0)
+    private int favoriteNumber = 0;
+
     @ManyToOne
     private Seller seller;
 

@@ -60,4 +60,7 @@ public interface ECommerceMessage {
 
     String ADDRESS_DELETED = "Address deleted";
 
+    String ADDED_TO_FAVORITES = "Added To Favorites";
+
+    String REMOVE_FROM_FAVORITES = "Remove From Favorites";
 }
