@@ -19,9 +19,9 @@ public class ProductServiceImpl implements ProductService {
 
     private final ProductRepository productRepository;
 
-    private final CartRepository cartRepository;
+    private final CartService cartService;
 
-    private final CreditCardRepository creditCardRepository;
+    private final CreditCardService creditCardService;
 
     private final ConfirmedOrderRepository confirmedOrderRepository;
 
@@ -99,25 +99,25 @@ public class ProductServiceImpl implements ProductService {
         if(product.getStock() == 0) {
             productRepository.deleteById(product.getId());
         }
-        cartRepository.save(cart);
+        cartService.add(cart);
 
         return cart;
     }
 
     @Override
     public List<Cart> getCart() {
-        return cartRepository.findAll();
+        return cartService.getAll();
     }
 
     @Override
     public void removeFromCart(int id) {
-        Cart cart = cartRepository.getById(id);
-        cartRepository.deleteById(cart.getId());
+        Cart cart = cartService.getById(id);
+        cartService.deleteById(cart.getId());
     }
 
     @Override
     public ConfirmedOrder confirmCart(ConfirmCartRequest confirmCartRequest) {
-        Optional<Cart> cart = cartRepository.findById(confirmCartRequest.getId());
+        Optional<Cart> cart = Optional.ofNullable(cartService.getById(confirmCartRequest.getId()));
 
         if (cart.isPresent()) {
             Optional<PromoCode> code = promoCodeRepository.findPromoCodeByCode(confirmCartRequest.getPromoCode());
@@ -136,10 +136,10 @@ public class ProductServiceImpl implements ProductService {
                 confirmedOrder.setProductPrice(cart.get().getProductPrice());
             }
 
-            creditCardRepository.save(new CreditCard(confirmCartRequest.getCardNumber(), confirmCartRequest.getCvv(),
+            creditCardService.add(new CreditCard(confirmCartRequest.getCardNumber(), confirmCartRequest.getCvv(),
                     confirmCartRequest.getNameAndSurname(), confirmCartRequest.getExpirationDate()));
             confirmedOrderRepository.save(confirmedOrder);
-            cartRepository.deleteById(cart.get().getId());
+            cartService.deleteById(cart.get().getId());
 
             return confirmedOrder;
             }
@@ -148,20 +148,17 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public List<ConfirmedOrder> getAllConfirmedOrder() {
-        List<ConfirmedOrder> confirmedOrders = confirmedOrderRepository.findAll();
-        return confirmedOrders;
+        return confirmedOrderRepository.findAll();
     }
 
     @Override
     public ConfirmedOrder getConfirmedOrderById(int id) {
-        ConfirmedOrder confirmedOrder = confirmedOrderRepository.findById(id).orElseThrow(() -> new NotFoundException("confirmed order couldn't be found by following id: " + id));
-        return confirmedOrder;
+        return confirmedOrderRepository.findById(id).orElseThrow(() -> new NotFoundException("confirmed order couldn't be found by following id: " + id));
     }
 
     @Override
     public ConfirmedOrder getConfirmedOrderByOrderNumber(Long orderNumber) {
-        ConfirmedOrder confirmedOrder = confirmedOrderRepository.findConfirmedOrderByOrderNumber(orderNumber);
-        return confirmedOrder;
+        return confirmedOrderRepository.findConfirmedOrderByOrderNumber(orderNumber);
     }
 
 

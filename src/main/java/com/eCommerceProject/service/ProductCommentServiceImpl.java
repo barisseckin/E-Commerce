@@ -17,7 +17,7 @@ public class ProductCommentServiceImpl implements ProductCommentService{
 
     private final ProductCommentRepository productCommentRepository;
 
-    private final ProductRepository productRepository;
+    private final ProductService productService;
 
     @Override
     public ProductComment add(ProductComment productComment) {
@@ -47,7 +47,7 @@ public class ProductCommentServiceImpl implements ProductCommentService{
 
     @Override
     public List<ProductComment> getCommentsByProduct(int id) {
-        Product product = productRepository.getById(id);
+        Product product = productService.getById(id);
         List<ProductComment> responseComment = new ArrayList<>();
 
         for (ProductComment productComment : product.getProductComment()) {

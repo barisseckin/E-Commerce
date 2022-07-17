@@ -1,6 +1,5 @@
 package com.eCommerceProject.service;
 
-import com.eCommerceProject.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
@@ -12,7 +11,7 @@ public class SendEmailServiceImpl implements SendEmailService{
 
     private final JavaMailSender javaMailSender;
 
-    private final UserRepository userRepository;
+    private final UserService userService;
 
     @Override
     public void sendEmails(String to, String body, String topic) {
@@ -28,7 +27,7 @@ public class SendEmailServiceImpl implements SendEmailService{
     public void sendEmailAllUser(String body, String topic) {
         SimpleMailMessage simpleMailMessage = new SimpleMailMessage();
 
-        userRepository.findAll().forEach(user -> {
+        userService.getAll().forEach(user -> {
 
             if (user.isNotificationPermission()) {
                 simpleMailMessage.setTo("tiklakapinda");

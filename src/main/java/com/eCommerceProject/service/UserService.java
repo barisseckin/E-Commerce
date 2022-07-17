@@ -10,7 +10,7 @@ import java.util.List;
 public interface UserService {
     User add(User createDto);
     List<User> getAll();
-    User getByid(int id);
+    User getById(int id);
     List<User> slice(Pageable pageable);
     void deleteById(int id);
     List<UserViewDto> getUserViewDto();
