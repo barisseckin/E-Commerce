@@ -36,8 +36,8 @@ public class UserController {
     }
 
     @GetMapping("getById/{id}")
-    public User getByid(@PathVariable int id) {
-        return this.userService.getByid(id);
+    public User getById(@PathVariable int id) {
+        return this.userService.getById(id);
     }
 
     @GetMapping("slice")

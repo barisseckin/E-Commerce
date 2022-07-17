@@ -20,12 +20,12 @@ public class UpdateProductPriceServiceImpl implements UpdateProductPriceService{
 
     private final SendEmailService emailService;
 
-    private final UserRepository userRepository;
+    private final UserService userService;
 
     @Override
     public void createCampaign(CampaignCreateRequest campaignCreateRequest) {
         Optional<Product> product = productRepository.findById(campaignCreateRequest.getProductId());
-        List<User> users = userRepository.findAll();
+        List<User> users = userService.getAll();
 
         if (product.isPresent()) {
             product.get().setProductPrice( product.get().getProductPrice() - campaignCreateRequest.getDiscountAmount());

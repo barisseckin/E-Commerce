@@ -1,6 +1,5 @@
 package com.eCommerceProject.service;
 
-import com.eCommerceProject.repository.UserRepository;
 import com.eCommerceProject.model.User;
 import com.eCommerceProject.security.JwtUserDetails;
 import lombok.RequiredArgsConstructor;
@@ -13,16 +12,16 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class UserDetailsServiceImpl implements UserDetailsService {
 
-    private final UserRepository userRepository;
+    private final UserService userService;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        User user = userRepository.findByUserName(username);
+        User user = userService.getByUserName(username);
         return JwtUserDetails.create(user);
     }
 
     public UserDetails loadUserById(int id) {
-        User user = userRepository.findById(id).get();
+        User user = userService.getById(id);
         return JwtUserDetails.create(user);
     }
 

@@ -17,18 +17,16 @@ public class AddressServiceImpl implements AddressService{
     
     private final AddressRepository addressRepository;
     
-    private final UserRepository userRepository;
+    private final UserService userService;
     
     @Override
     public Address add(Address address) {
-        Address createResponse = addressRepository.save(address);
-        return createResponse;
+        return addressRepository.save(address);
     }
 
     @Override
     public List<Address> getAll() {
-        List<Address> addresses = addressRepository.findAll();
-        return addresses;
+        return addressRepository.findAll();
     }
 
     @Override
@@ -38,7 +36,7 @@ public class AddressServiceImpl implements AddressService{
 
     @Override
     public List<Address> getAddressByUserId(int userId) {
-        Optional<User> user = userRepository.findById(userId);
+        Optional<User> user = Optional.ofNullable(userService.getById(userId));
         List<Address> addressesResponse = new ArrayList<>();
         
         if (user.isPresent()) {

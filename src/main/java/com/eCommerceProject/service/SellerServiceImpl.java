@@ -1,5 +1,6 @@
 package com.eCommerceProject.service;
 
+import com.eCommerceProject.exception.NotFoundException;
 import com.eCommerceProject.model.Seller;
 import com.eCommerceProject.repository.SellerRepository;
 import lombok.RequiredArgsConstructor;
@@ -31,17 +32,12 @@ public class SellerServiceImpl implements SellerService {
 
     @Override
     public List<Seller> getAll() {
-        List<Seller> responseSeller = sellerRepository.findAll();
-        return responseSeller;
+        return sellerRepository.findAll();
     }
 
     @Override
     public Seller getById(int id) {
         Optional<Seller> seller = sellerRepository.findById(id);
-        if (seller.isPresent()) {
-            return seller.get();
-        } else {
-            return null;
-        }
+        return seller.orElseThrow(() -> new NotFoundException("seller couldn't be found by following id: " + id));
     }
 }

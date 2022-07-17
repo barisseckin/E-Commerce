@@ -4,7 +4,6 @@ import com.eCommerceProject.exception.NotFoundException;
 import com.eCommerceProject.model.PromoCode;
 import com.eCommerceProject.model.User;
 import com.eCommerceProject.repository.PromoCodeRepository;
-import com.eCommerceProject.repository.UserRepository;
 import com.eCommerceProject.request.PromoCodeCreateRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -17,7 +16,7 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class PromoCodeServiceImpl implements PromoCodeService{
 
-    private final UserRepository userRepository;
+    private final UserService userService;
 
     private final PromoCodeRepository promoCodeRepository;
 
@@ -27,7 +26,7 @@ public class PromoCodeServiceImpl implements PromoCodeService{
 
     @Override
     public String createPromoCode(PromoCodeCreateRequest promoCodeRequest) {
-        Optional<User> user = userRepository.findById(promoCodeRequest.getUserId());
+        Optional<User> user = Optional.ofNullable(userService.getById(promoCodeRequest.getUserId()));
 
         if (user.isPresent()) {
             PromoCode promoCode = new PromoCode();
@@ -38,7 +37,7 @@ public class PromoCodeServiceImpl implements PromoCodeService{
             promoCode.setUser(user.get());
 
             promoCodeRepository.save(promoCode);
-            userRepository.save(user.get());
+            userService.add(user.get());
 
             sendEmailService.sendEmails(user.get().getEMail(), "You have promo code\n Expiration Date: "+ promoCode.getExpirationDate() + "\nCode: "
                     + promoCode.getCode(), "You Have Promo Code");
@@ -50,8 +49,7 @@ public class PromoCodeServiceImpl implements PromoCodeService{
 
     @Override
     public List<PromoCode> getAll() {
-        List<PromoCode> promoCodes = promoCodeRepository.findAll();
-        return promoCodes;
+        return promoCodeRepository.findAll();
     }
 
     @Override

@@ -16,12 +16,11 @@ public class CreditCardServiceImpl implements CreditCardService{
 
     private final CreditCardRepository creditCardRepository;
 
-    private final UserRepository userRepository;
+    private final UserService userService;
 
     @Override
     public List<CreditCard> getAll() {
-        List<CreditCard> creditCards = creditCardRepository.findAll();
-        return creditCards;
+        return creditCardRepository.findAll();
     }
 
     @Override
@@ -31,7 +30,7 @@ public class CreditCardServiceImpl implements CreditCardService{
 
     @Override
     public List<CreditCard> getCreditCardByUserId(int id) {
-        Optional<User> user = userRepository.findById(id);
+        Optional<User> user = Optional.ofNullable(userService.getById(id));
 
         if (user.isPresent()) {
             CreditCard creditCard = user.get().getCreditCard();
