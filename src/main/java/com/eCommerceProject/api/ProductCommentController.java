@@ -1,7 +1,7 @@
 package com.eCommerceProject.api;
 
 import com.eCommerceProject.model.ProductComment;
-import com.eCommerceProject.service.ProductCommentService;
+import com.eCommerceProject.service.product.ProductCommentService;
 import com.eCommerceProject.shared.ECommerceMessage;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;

@@ -1,7 +1,8 @@
-package com.eCommerceProject.service;
+package com.eCommerceProject.service.category;
 
 import com.eCommerceProject.repository.CategoryRepository;
 import com.eCommerceProject.model.Category;
+import com.eCommerceProject.service.category.CategoryService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

@@ -5,6 +5,7 @@ import com.eCommerceProject.model.PromoCode;
 import com.eCommerceProject.model.User;
 import com.eCommerceProject.repository.PromoCodeRepository;
 import com.eCommerceProject.request.PromoCodeCreateRequest;
+import com.eCommerceProject.service.user.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

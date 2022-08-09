@@ -1,9 +1,10 @@
-package com.eCommerceProject.service;
+package com.eCommerceProject.service.product;
 
 import com.eCommerceProject.model.Product;
 import com.eCommerceProject.model.ProductComment;
 import com.eCommerceProject.repository.ProductCommentRepository;
-import com.eCommerceProject.repository.ProductRepository;
+import com.eCommerceProject.service.product.ProductCommentService;
+import com.eCommerceProject.service.product.ProductService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -13,7 +14,7 @@ import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
-public class ProductCommentServiceImpl implements ProductCommentService{
+public class ProductCommentServiceImpl implements ProductCommentService {
 
     private final ProductCommentRepository productCommentRepository;
 

@@ -1,7 +1,7 @@
 package com.eCommerceProject.api;
 
 import com.eCommerceProject.service.SendEmailService;
-import com.eCommerceProject.service.UserService;
+import com.eCommerceProject.service.user.UserService;
 import com.eCommerceProject.request.UserCreateRequest;
 import com.eCommerceProject.model.User;
 import com.eCommerceProject.request.UserDeleteRequest;

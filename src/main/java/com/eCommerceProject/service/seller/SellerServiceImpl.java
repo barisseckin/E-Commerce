@@ -1,4 +1,4 @@
-package com.eCommerceProject.service;
+package com.eCommerceProject.service.seller;
 
 import com.eCommerceProject.exception.NotFoundException;
 import com.eCommerceProject.model.Seller;

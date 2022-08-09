@@ -1,6 +1,6 @@
 package com.eCommerceProject.api;
 
-import com.eCommerceProject.service.CategoryService;
+import com.eCommerceProject.service.category.CategoryService;
 import com.eCommerceProject.model.Category;
 import com.eCommerceProject.shared.ECommerceMessage;
 import lombok.RequiredArgsConstructor;

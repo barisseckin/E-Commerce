@@ -1,10 +1,11 @@
-package com.eCommerceProject.service;
+package com.eCommerceProject.service.user;
 
 import com.eCommerceProject.exception.NotFoundException;
 import com.eCommerceProject.repository.UserRepository;
 import com.eCommerceProject.dto.viewDto.UserViewDto;
 import com.eCommerceProject.model.User;
 import com.eCommerceProject.request.UserDeleteRequest;
+import com.eCommerceProject.service.user.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;

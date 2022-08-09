@@ -1,6 +1,6 @@
 package com.eCommerceProject.config;
 
-import com.eCommerceProject.service.UserDetailsServiceImpl;
+import com.eCommerceProject.service.user.UserDetailsServiceImpl;
 import com.eCommerceProject.security.JwtAuthenticationEntryPoint;
 import com.eCommerceProject.security.JwtAuthenticationFilter;
 import org.springframework.http.HttpMethod;

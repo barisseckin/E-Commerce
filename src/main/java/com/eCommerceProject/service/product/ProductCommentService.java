@@ -1,4 +1,4 @@
-package com.eCommerceProject.service;
+package com.eCommerceProject.service.product;
 
 import com.eCommerceProject.model.ProductComment;
 

@@ -1,4 +1,4 @@
-package com.eCommerceProject.service;
+package com.eCommerceProject.service.seller;
 
 import com.eCommerceProject.model.SellerComment;
 

@@ -1,4 +1,4 @@
-package com.eCommerceProject.service;
+package com.eCommerceProject.service.product;
 
 import com.eCommerceProject.dto.createDto.ProductCreateDto;
 import com.eCommerceProject.dto.viewDto.ProductViewDto;

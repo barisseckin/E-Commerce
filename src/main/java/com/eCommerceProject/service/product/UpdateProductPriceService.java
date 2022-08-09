@@ -1,4 +1,4 @@
-package com.eCommerceProject.service;
+package com.eCommerceProject.service.product;
 
 import com.eCommerceProject.request.CampaignCreateRequest;
 import com.eCommerceProject.request.PriceIncreaseRequest;

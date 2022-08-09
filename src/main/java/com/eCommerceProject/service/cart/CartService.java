@@ -1,4 +1,4 @@
-package com.eCommerceProject.service;
+package com.eCommerceProject.service.cart;
 
 import com.eCommerceProject.model.Cart;
 

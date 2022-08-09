@@ -2,6 +2,7 @@ package com.eCommerceProject.service;
 
 import com.eCommerceProject.repository.UserRepository;
 import com.eCommerceProject.model.User;
+import com.eCommerceProject.service.user.UserServiceImpl;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;

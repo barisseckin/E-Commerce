@@ -3,7 +3,7 @@ package com.eCommerceProject.config;
 import com.eCommerceProject.model.Category;
 import com.eCommerceProject.model.Product;
 import com.eCommerceProject.repository.ProductRepository;
-import com.eCommerceProject.service.CategoryService;
+import com.eCommerceProject.service.category.CategoryService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;

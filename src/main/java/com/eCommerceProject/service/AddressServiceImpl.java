@@ -3,7 +3,7 @@ package com.eCommerceProject.service;
 import com.eCommerceProject.model.Address;
 import com.eCommerceProject.model.User;
 import com.eCommerceProject.repository.AddressRepository;
-import com.eCommerceProject.repository.UserRepository;
+import com.eCommerceProject.service.user.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

@@ -1,4 +1,4 @@
-package com.eCommerceProject.service;
+package com.eCommerceProject.service.category;
 
 import com.eCommerceProject.model.Category;
 

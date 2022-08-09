@@ -2,7 +2,7 @@ package com.eCommerceProject.api;
 
 import com.eCommerceProject.model.Seller;
 import com.eCommerceProject.request.SellerCreateRequest;
-import com.eCommerceProject.service.SellerService;
+import com.eCommerceProject.service.seller.SellerService;
 import com.eCommerceProject.shared.ECommerceMessage;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;

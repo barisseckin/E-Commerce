@@ -1,7 +1,8 @@
-package com.eCommerceProject.service;
+package com.eCommerceProject.service.user;
 
 import com.eCommerceProject.model.User;
 import com.eCommerceProject.security.JwtUserDetails;
+import com.eCommerceProject.service.user.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

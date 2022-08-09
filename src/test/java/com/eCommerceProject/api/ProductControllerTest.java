@@ -1,6 +1,6 @@
 package com.eCommerceProject.api;
 
-import com.eCommerceProject.service.ProductService;
+import com.eCommerceProject.service.product.ProductService;
 import com.eCommerceProject.dto.createDto.ProductCreateDto;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;

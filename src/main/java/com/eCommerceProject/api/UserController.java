@@ -2,14 +2,13 @@ package com.eCommerceProject.api;
 
 import com.eCommerceProject.request.UserNameUpdateRequest;
 import com.eCommerceProject.request.UserUpdateNotificationPermissionRequest;
-import com.eCommerceProject.service.UserService;
+import com.eCommerceProject.service.user.UserService;
 import com.eCommerceProject.dto.viewDto.UserViewDto;
 import com.eCommerceProject.model.User;
 import com.eCommerceProject.shared.GenericResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.parameters.P;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;

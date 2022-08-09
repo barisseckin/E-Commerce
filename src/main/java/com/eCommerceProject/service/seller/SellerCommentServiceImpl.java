@@ -1,10 +1,9 @@
-package com.eCommerceProject.service;
+package com.eCommerceProject.service.seller;
 
 import com.eCommerceProject.exception.NotFoundException;
 import com.eCommerceProject.model.Seller;
 import com.eCommerceProject.model.SellerComment;
 import com.eCommerceProject.repository.SellerCommentRepository;
-import com.eCommerceProject.repository.SellerRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

@@ -2,8 +2,8 @@ package com.eCommerceProject.service;
 
 import com.eCommerceProject.model.Product;
 import com.eCommerceProject.model.ProductComment;
-import com.eCommerceProject.model.User;
 import com.eCommerceProject.repository.ProductCommentRepository;
+import com.eCommerceProject.service.product.ProductCommentServiceImpl;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;

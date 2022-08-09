@@ -1,11 +1,12 @@
-package com.eCommerceProject.service;
+package com.eCommerceProject.service.product;
 
 import com.eCommerceProject.model.Product;
 import com.eCommerceProject.model.User;
 import com.eCommerceProject.repository.ProductRepository;
-import com.eCommerceProject.repository.UserRepository;
 import com.eCommerceProject.request.CampaignCreateRequest;
 import com.eCommerceProject.request.PriceIncreaseRequest;
+import com.eCommerceProject.service.SendEmailService;
+import com.eCommerceProject.service.user.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -14,7 +15,7 @@ import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
-public class UpdateProductPriceServiceImpl implements UpdateProductPriceService{
+public class UpdateProductPriceServiceImpl implements UpdateProductPriceService {
 
     private final ProductRepository productRepository;
 
